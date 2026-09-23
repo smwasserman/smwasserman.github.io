@@ -1,0 +1,131 @@
+:root {
+  --paper: #f4f6f8;
+  --ink: #18212e;
+  --slate: #586474;
+  --link: #1f4fd1;
+  --caution: #ffce3a;
+  --panel: #ffffff;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151b24;
+    --ink: #e8ecf1;
+    --slate: #a3adba;
+    --link: #8fb0ff;
+    --panel: #1d2531;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: clamp(3rem, 10vw, 7rem) 1rem 5rem;
+}
+
+h1,
+h2 {
+  font-family: var(--display);
+  line-height: 1.1;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 11vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.intro {
+  margin-top: 1.25rem;
+  font-size: 1.3rem;
+  color: var(--slate);
+}
+
+section {
+  margin-top: 3.5rem;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 3px;
+}
+
+kbd {
+  font-family: inherit;
+  font-weight: 700;
+  padding: 0 0.3em;
+  border: 1px solid var(--slate);
+  border-radius: 4px;
+}
+
+/* The store entry is framed in caution tape: it's the one loud thing on the page. */
+.exhibit {
+  padding: 14px;
+  background: repeating-linear-gradient(-45deg, var(--caution) 0 18px, #18212e 18px 36px);
+}
+
+.exhibit-inner {
+  background: var(--panel);
+  padding: clamp(1.25rem, 5vw, 2.25rem);
+}
+
+.exhibit h2 {
+  font-size: clamp(1.75rem, 6vw, 2.4rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.warning {
+  border-left: 4px solid var(--caution);
+  padding-left: 0.75rem;
+}
+
+.enter {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--caution);
+  color: #18212e;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: 2px solid #18212e;
+}
+
+.enter:hover {
+  background: #ffe07a;
+}
