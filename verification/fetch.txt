@@ -1,248 +1,217 @@
 HTTP/2 200 
 server: GitHub.com
 content-type: text/html; charset=utf-8
-last-modified: Wed, 23 Sep 2026 03:33:01 GMT
+last-modified: Wed, 23 Sep 2026 04:22:22 GMT
 access-control-allow-origin: *
 strict-transport-security: max-age=31556952
-etag: "6ab3486d-2c9a"
-expires: Wed, 23 Sep 2026 03:47:28 GMT
+etag: "6ab353fe-2fac"
+expires: Wed, 23 Sep 2026 04:37:41 GMT
 cache-control: max-age=600
 x-proxy-cache: MISS
-x-github-request-id: B000:2C5592:3EE4A0:4EDA00:6AB34977
+x-github-request-id: DC78:1EC06C:49FA40:5BE583:6AB3553D
 x-github-edge-region: iad
 accept-ranges: bytes
-date: Wed, 23 Sep 2026 03:42:28 GMT
+age: 0
+date: Wed, 23 Sep 2026 04:27:41 GMT
 via: 1.1 varnish
-age: 300
-x-served-by: cache-den-kden1300039-DEN
-x-cache: HIT
-x-cache-hits: 2
-x-timer: S1790134949.734398,VS0,VE1
+x-served-by: cache-den-kden1300041-DEN
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1790137661.156561,VS0,VE80
 vary: Accept-Encoding
-x-fastly-request-id: febe55f99cf72cb6ad8f0c9f40e2d371a17c1424
-content-length: 11418
+x-fastly-request-id: 6240055e50de10a090ecea26cb3d7bc290347b90
+content-length: 12204
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Silliest Site on the Internet">
-    <title>Silly Samuel's Silly Store</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/homepage.css">
-    <script src="js/homepage.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Samuel Wasserman's personal site: a late-90s desktop with a deliberately terrible online store, a game of 2048, and a pile of random facts.">
+  <title>Samuel Wasserman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Bungee&family=Caveat:wght@600;700&family=Silkscreen&family=VT323&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/2048.js" defer></script>
+  <script src="js/home.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1 class="rainbow-fast">Silly Samuel's Silly Store</h1>
-        <p>Check out our silly products!</p>
-    </header>
+  <!-- Pixel icons, drawn once and reused by the desktop and taskbar -->
+  <svg class="sprites" aria-hidden="true">
+    <symbol id="i-doc" viewBox="0 0 16 16"><path fill="#fff" d="M3 1h7l3 3v11H3z"/><path fill="#1c1d22" d="M2 0h9v1H2zM2 1h1v15H2zM3 15h11v1H3zM13 4h1v11h-1zM10 1h1v3h3v1h-4zM11 1h1v1h-1zM12 2h1v1h-1zM5 6h6v1H5zM5 8h6v1H5zM5 10h6v1H5zM5 12h4v1H5z"/></symbol>
+    <symbol id="i-store" viewBox="0 0 16 16"><path fill="#f2b61b" d="M1 3h14v12H1z"/><path fill="#1c1d22" d="M0 2h16v1H0zM0 3h1v13H0zM15 3h1v13h-1zM1 15h14v1H1zM3 3h2l-4 4V5zM8 3h2l-9 9v-2zM13 3h2L3 15H1zM15 6v2l-7 7H6zM15 11v2l-2 2h-2z"/></symbol>
+    <symbol id="i-2048" viewBox="0 0 16 16"><path fill="#1c1d22" d="M0 0h16v16H0z"/><path fill="#f2b61b" d="M2 2h5v5H2z"/><path fill="#e0482a" d="M9 2h5v5H9z"/><path fill="#2fa37a" d="M2 9h5v5H2z"/><path fill="#2e55d9" d="M9 9h5v5H9z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16"><path fill="#2e55d9" d="M1 2h14v10H1z"/><path fill="#1c1d22" d="M0 1h16v1H0zM0 2h1v11H0zM15 2h1v11h-1zM0 12h16v1H0zM6 13h4v1H6zM4 14h8v2H4z"/><path fill="#fff" d="M7 4h2v2H7zM7 7h2v4H7z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 16 16"><path fill="#2fa37a" d="M5 1h6v1h2v2h1v2h1v4h-1v2h-1v2h-2v1H5v-1H3v-2H2v-2H1V6h1V4h1V2h2z"/><path fill="#1c1d22" d="M5 0h6v1H5zM3 1h2v1H3zM11 1h2v1h-2zM2 2h1v2H2zM13 2h1v2h-1zM1 4h1v2H1zM14 4h1v2h-1zM0 6h1v4H0zM15 6h1v4h-1zM1 10h1v2H1zM14 10h1v2h-1zM2 12h1v2H2zM13 12h1v2h-1zM3 14h2v1H3zM11 14h2v1h-2zM5 15h6v1H5zM7 1h2v14H7zM1 7h14v2H1z"/></symbol>
+  </svg>
 
-    <main>
-        <!-- Banner Carousel -->
-        <div id="bannerCarousel">
-            <div class="banner-slide banner-slide-1">
-                <h2 class="blink">🔥 FLASH SALE! 90% OFF EVERYTHING! 🔥</h2>
-                <p>*Discount may not be applied at checkout</p>
-            </div>
-            <div class="banner-slide banner-slide-2">
-                <h2>⭐ RATED #1 BY OURSELVES! ⭐</h2>
-            </div>
-            <div class="banner-slide banner-slide-3">
-                <h2 class="spinning">🎬 NORBIT: THE MOVIE OF THE CENTURY! 🎬</h2>
-            </div>
-            <div class="banner-slide banner-slide-4">
-                <h2>🚨 ONLY 3 LEFT IN STOCK!🚨</h2>
-            </div>
-            <div class="banner-slide banner-slide-5">
-                <h2>💰 BUY NOW, REGRET LATER! 💰</h2>
-            </div>
-        </div>
-
-        <!-- Scrolling Marquee Text -->
-        <marquee behavior="scroll" direction="left" scrollamount="10" class="marquee-news">
-            ⚡ BREAKING NEWS: Scientists discover airfryers can solve world peace! ⚡ ORDER NOW! ⚡ LIMITED TIME ONLY! ⚡ FREE SHIPPING* (*with purchase of $1000 or more)
-        </marquee>
-
-        <section id="home">
-            <h2 class="blink">Welcome to Silly Samuel's Silly Store!</h2>
-            <p>Your one-stop shop for AI-powered airfryers and classic DVDs!</p>
-
-            <!-- Live Stats -->
-            <div class="live-stats">
-                <p class="live-stats-viewing">🔴 LIVE: <span id="viewingCount">0</span> people are viewing this page RIGHT NOW!</p>
-                <p class="live-stats-visitors">Total visitors today: <span id="visitorCount">0</span></p>
-            </div>
-        </section>
-
-        <!-- Random GIFs everywhere -->
-        <div class="gif-container">
-            <img src="https://i.pinimg.com/originals/37/e6/54/37e6546555565309406876ec766d5b05.gif" alt="monkey">
-            <img src="https://i.pinimg.com/originals/14/91/d7/1491d7c7f81981967d9cb1410ba13066.gif">
-            <img src="https://i.gifer.com/embedded/download/WczX.gif" alt="monkey">
-            <img src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="nyan">
-            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="guy">
-        </div>
-
-        <marquee behavior="scroll" direction="right" scrollamount="8" class="marquee-winner">
-            🎉 CONGRATULATIONS! You are our 1,000,000th visitor! Click anywhere to claim your prize! 🎉
-        </marquee>
-
-        <!-- More GIFs -->
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif" alt="spinning">
-            <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" alt="neon">
-            <img src="https://media.tenor.com/Kjucnm6ZrI0AAAAM/later-later-dude.gif" alt="stu">
-            <img src="https://media.tenor.com/wLTK-fVE75UAAAAM/dancingbaby.gif" alt="stu">
-        </div>
-
-        <!-- Fake Trust Badges -->
-        <div class="trust-badges-section">
-            <h3 class="spinning">🏆 TRUSTED BY MILLIONS! 🏆</h3>
-            <div class="trust-badges-container">
-                <div class="trust-badge trust-badge-1">⭐⭐⭐⭐⭐<br>5/5 Stars<br>(Sample: 1)</div>
-                <div class="trust-badge trust-badge-2">✓ BBB Accredited<br>(Not Really)</div>
-                <div class="trust-badge trust-badge-3">🔒 100% Secure<br>(Probably)</div>
-                <div class="trust-badge trust-badge-4">📺 As Seen On TV<br>(In Our Dreams)</div>
-                <div class="trust-badge trust-badge-5">🏅 Award Winning<br>(Made Up Award)</div>
-            </div>
-        </div>
-
-        <section id="featured">
-            <h2 class="blink">Featured Products</h2>
-            <p>Check out our amazing selection of AI-Powered Airfryers and Hillarious DVD Classics!</p>
-        </section>
-
-        <!-- Embedded Auto-Play Video -->
-        <div class="video-section">
-            <h3>📺 WATCH OUR PROMOTIONAL VIDEO! 📺</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/HFIdZpc2L6w?si=_-VFxLZ3j0G5s6rq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-
-        <marquee behavior="alternate" direction="left" scrollamount="15" class="marquee-norbit">
-            ⬅️ BUY NORBIT NOW! ➡️ BUY NORBIT NOW! ⬅️ BUY NORBIT NOW! ➡️
-        </marquee>
-
-        <!-- Overwhelming Button Grid -->
-        <section class="quick-actions-section">
-            <h2 class="blink">🎯 QUICK ACTIONS 🎯</h2>
-            <div class="quick-actions-grid">
-                <button class="chaos-button">Subscribe Premium</button>
-                <button class="chaos-button">Download App</button>
-                <button class="chaos-button">Follow Twitter</button>
-                <button class="chaos-button">Follow Facebook</button>
-                <button class="chaos-button">Follow Instagram</button>
-                <a href="browse.html" class="chaos-button">Browse Products</a>
-                <button class="chaos-button">Follow TikTok</button>
-                <button class="chaos-button">Follow LinkedIn</button>
-                <button class="chaos-button">Follow Pinterest</button>
-                <button class="chaos-button">Take Survey</button>
-                <button class="chaos-button">Refer Friend</button>
-                <a href="cart.html" class="chaos-button">Cart</a>
-                <button class="chaos-button">Read Blog</button>
-                <button class="chaos-button">Watch Tutorial</button>
-                <button class="chaos-button">Contact Support</button>
-                <button class="chaos-button">Track Order</button>
-                <button class="chaos-button">Return Policy</button>
-                <button class="chaos-button">Privacy Policy</button>
-                <button class="chaos-button">Terms of Service</button>
-                <a href="index.html" class="chaos-button">Home</a>
-                <button class="chaos-button">Careers</button>
-                <button class="chaos-button">Press Release</button>
-                <button class="chaos-button">Investor Relations</button>
-                <button class="chaos-button">Partner With Us</button>
-                <button class="chaos-button">Become Affiliate</button>
-                <button class="chaos-button">Gift Cards</button>
-                <a href="login.html" class="chaos-button">Login</a>
-                <button class="chaos-button">Student Discount</button>
-                <button class="chaos-button">Military Discount</button>
-                <button class="chaos-button">Corporate Orders</button>
-                <button class="chaos-button">Wholesale Inquiry</button>
-                <button class="chaos-button">Report Bug</button>
-                <button class="chaos-button">Submit Feedback</button>
-                <button class="chaos-button">Join Beta Test</button>
-            </div>
-        </section>
-
-        <!-- More chaos -->
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat">
-            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="dog">
-            <img src="https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif" alt="more">
-        </div>
-    </main>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="browse.html">Browse Products</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
+  <div class="desktop">
+    <nav class="icons" aria-label="Desktop">
+      <button type="button" class="icon" data-open="win-about"><svg aria-hidden="true"><use href="#i-doc"/></svg><span>about_me.txt</span></button>
+      <button type="button" class="icon" data-open="win-store"><svg aria-hidden="true"><use href="#i-store"/></svg><span>silly_store.exe</span></button>
+      <button type="button" class="icon" data-open="win-2048"><svg aria-hidden="true"><use href="#i-2048"/></svg><span>2048.exe</span><b class="new">New!</b></button>
+      <button type="button" class="icon" data-open="win-facts"><svg aria-hidden="true"><use href="#i-doc"/></svg><span>did_you_know.txt</span></button>
+      <button type="button" class="icon" data-open="win-system"><svg aria-hidden="true"><use href="#i-info"/></svg><span>system_info.txt</span></button>
+      <button type="button" class="icon" data-open="win-links"><svg aria-hidden="true"><use href="#i-globe"/></svg><span>links.htm</span></button>
     </nav>
-    <footer>
-        <p>&copy; 2025 Silly Sales Inc. All rights reserved.</p>
-    </footer>
 
-    <!-- Cookie Consent Banner -->
-    <div id="cookieConsent">
-        <div class="cookie-content">
-            <h3>🍪 WE USE COOKIES! 🍪</h3>
-            <p>
-                We use cookies, trackers, pixels, beacons, fingerprinting, and 847 other technologies to track everything you do online and sell it to the highest bidder! By continuing to use this site, you agree to let us do whatever we want with your data!
-            </p>
-            <div class="cookie-buttons">
-                <button onclick="acceptAllCookies()" class="btn-accept-cookies">Accept All (Recommended!)</button>
-                <button onclick="showCookieSettings()" class="btn-cookie-settings">Cookie Settings (Doesn't work)</button>
+    <main class="windows">
+      <section class="window win-about" id="win-about" tabindex="-1" aria-labelledby="t-about">
+        <header class="titlebar">
+          <span class="title" id="t-about">about_me.txt</span>
+          <button type="button" class="close" aria-label="Close about_me.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h1>Samuel Wasserman</h1>
+          <p class="intro">Welcome to my corner of the internet. There's a terrible store, a game of 2048, and more facts than anyone asked for.</p>
+          <p>It's built like a computer from 1998 because that's when the web was at its most personal: everyone had a homepage, and every homepage was a little strange. Drag the windows around, close them, reopen them from the desktop.</p>
+          <div class="counter">
+            <span>Your visits to this page</span>
+            <output id="visits">000001</output>
+          </div>
+        </div>
+      </section>
+
+      <section class="window win-facts" id="win-facts" tabindex="-1" aria-labelledby="t-facts">
+        <header class="titlebar">
+          <span class="title" id="t-facts">did_you_know.txt</span>
+          <button type="button" class="close" aria-label="Close did_you_know.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Did you know?</h2>
+          <p class="fact" id="fact" aria-live="polite">The first website, info.cern.ch, went online in 1991. CERN restored it in 2013, and you can still visit it.</p>
+          <div class="fact-footer">
+            <span id="factCount"></span>
+            <button type="button" class="btn" id="nextFact">Another fact</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="window win-store" id="win-store" tabindex="-1" aria-labelledby="t-store">
+        <header class="titlebar">
+          <span class="title" id="t-store">silly_store.exe</span>
+          <button type="button" class="close" aria-label="Close silly_store.exe">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Silly Samuel's Silly Store</h2>
+          <p>An online store for air fryers and DVDs of Norbit, designed to be as hard to use as possible. It breaks twelve rules of good interface design on purpose: runaway login buttons, a "Remove" button that adds items, 99,451 zip codes in random order, and a checkout that charges you a mandatory tip.</p>
+          <p>You can still log in (username <kbd>name</kbd>, password <kbd>12345</kbd>), shop, and check out. It just fights you the whole way. Every store page has an <em>Explain the bad UX</em> switch in the bottom-left corner that marks each broken rule and says what it breaks.</p>
+          <p class="warning"><strong>Warning:</strong> the store has flashing, spinning and shaking content. You'll be asked about animations before it loads, and you can switch them off from any page.</p>
+          <a class="btn btn-big" href="store/">Enter the store</a>
+        </div>
+      </section>
+
+      <section class="window win-2048" id="win-2048" tabindex="-1" aria-labelledby="t-2048">
+        <header class="titlebar">
+          <span class="title" id="t-2048">2048.exe</span>
+          <button type="button" class="close" aria-label="Close 2048.exe">&times;</button>
+        </header>
+        <div class="window-body game" id="game2048">
+          <div class="game-top">
+            <p class="game-title">2048</p>
+            <div class="scores">
+              <p class="score-box">Score <output class="score">0</output></p>
+              <p class="score-box">Best <output class="best">0</output></p>
             </div>
+          </div>
+          <div class="game-bar">
+            <p>Join the tiles, get to <strong>2048!</strong></p>
+            <button type="button" class="game-btn new-game">New game</button>
+          </div>
+          <div class="board" tabindex="0" aria-label="2048 board" aria-describedby="gameHelp">
+            <div class="grid" aria-hidden="true">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="tiles"></div>
+            <div class="game-message" hidden>
+              <p class="game-message-text" role="status"></p>
+              <div class="game-message-buttons">
+                <button type="button" class="game-btn keep-going">Keep going</button>
+                <button type="button" class="game-btn try-again">Try again</button>
+              </div>
+            </div>
+          </div>
+          <div class="dpad" role="group" aria-label="Slide tiles">
+            <button type="button" class="game-btn" data-dir="up" aria-label="Slide up">&uarr;</button>
+            <button type="button" class="game-btn" data-dir="left" aria-label="Slide left">&larr;</button>
+            <button type="button" class="game-btn" data-dir="down" aria-label="Slide down">&darr;</button>
+            <button type="button" class="game-btn" data-dir="right" aria-label="Slide right">&rarr;</button>
+          </div>
+          <p class="help" id="gameHelp">Click the board, then use the arrow keys or W A S D. You can also swipe or use the buttons. Tiles with the same number merge into one.</p>
         </div>
-    </div>
+      </section>
 
-    <!-- Newsletter Popup Modal -->
-    <div id="newsletterModal" class="newsletter-modal">
-        <div class="newsletter-content">
-            <h2>📧 SUBSCRIBE TO OUR NEWSLETTER! 📧</h2>
-            <p>
-                Get exclusive deals, spam, more spam, and occasionally useful information sent directly to your inbox 50 times per day!
-            </p>
-            <input type="email" placeholder="Enter your email..." class="newsletter-input">
-            <br>
-            <button onclick="submitNewsletter()" class="btn-newsletter-submit">SUBSCRIBE NOW!</button>
-            <button onclick="closeNewsletterPopup()" class="btn-newsletter-later">Maybe later (Will ask again in 15 seconds)</button>
+      <section class="window win-system" id="win-system" tabindex="-1" aria-labelledby="t-system">
+        <header class="titlebar">
+          <span class="title" id="t-system">system_info.txt</span>
+          <button type="button" class="close" aria-label="Close system_info.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>About this site</h2>
+          <table>
+            <tr><th scope="row">Pages</th><td>7: this one, a 404 page, and 5 store pages</td></tr>
+            <tr><th scope="row">Frameworks</th><td>0. Plain HTML, CSS and JavaScript</td></tr>
+            <tr><th scope="row">Hosted on</th><td>GitHub Pages</td></tr>
+            <tr><th scope="row">Buttons on the store's front page</th><td>34, and 4 of them work</td></tr>
+            <tr><th scope="row">Login buttons</th><td>17, and 1 of them is real</td></tr>
+            <tr><th scope="row">Zip codes at checkout</th><td>99,451, shuffled</td></tr>
+            <tr><th scope="row">Ways to hear about the store</th><td>101, including "Burn Pattern on Toast"</td></tr>
+            <tr><th scope="row">Formats of Stuart Little for sale</th><td>6, including Betamax and LaserDisc</td></tr>
+            <tr><th scope="row">Bad UX notes in explain mode</th><td>47</td></tr>
+          </table>
         </div>
-    </div>
+      </section>
 
-    <!-- Limited Time Deal Popup -->
-    <div id="dealModal" class="deal-modal">
-        <div class="deal-content">
-            <h2 class="blink">⏰ LIMITED TIME OFFER! ⏰</h2>
-            <p class="deal-countdown-text">
-                TIME REMAINING: <span id="dealCountdown" class="deal-countdown-time">5:00</span>
-            </p>
-            <p class="deal-description">
-                Get 95% OFF everything!* Act now before this once-in-a-lifetime opportunity expires!
-            </p>
-            <p class="deal-disclaimer">*Discount not actually applied. Offer resets every 5 minutes.</p>
-            <br>
-            <button onclick="window.location.href='browse.html'" class="btn-deal-shop">SHOP NOW!</button>
-            <br>
-            <button onclick="closeDealPopup()" class="btn-deal-close">Close (You'll regret this)</button>
+      <section class="window win-links" id="win-links" tabindex="-1" aria-labelledby="t-links">
+        <header class="titlebar">
+          <span class="title" id="t-links">links.htm</span>
+          <button type="button" class="close" aria-label="Close links.htm">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Links</h2>
+          <ul class="links">
+            <li><a href="https://irisbahar.github.io/IrisBaharWebsite/">Dr. Iris Bahar's website</a>, which I helped make</li>
+            <li>My other website, <a href="https://lesbianflixxx.vip">lesbianflixxx.vip</a></li>
+            <li>The code for this site, on <a href="https://github.com/smwasserman/smwasserman.github.io">GitHub</a></li>
+          </ul>
+          <div class="badges" aria-label="Badges">
+            <span class="badge badge-browser">Best viewed with any browser</span>
+            <span class="badge badge-pages">Hosted on GitHub Pages</span>
+            <span class="badge badge-frameworks">0 frameworks used</span>
+            <span class="badge badge-construction">Under construction</span>
+          </div>
         </div>
-    </div>
+      </section>
+    </main>
+  </div>
 
-    <!-- Chatbot Widget -->
-    <div id="chatbotWidget">
-        <div class="chatbot-header">
-            <h3>💬 Chat With Us!</h3>
-            <button onclick="minimizeChatbot()" class="btn-chatbot-close">X</button>
-        </div>
-        <p class="chatbot-message">
-            Hi there! 👋 I'm a bot! I can't actually help you, but I'll keep popping up to pretend I can! Want to buy Norbit?
-        </p>
-        <input type="text" placeholder="Type a message..." class="chatbot-input">
-        <button class="btn-chatbot-send">Send (Does nothing)</button>
+  <footer class="taskbar">
+    <button type="button" class="start" aria-expanded="false" aria-controls="startMenu">Start</button>
+    <div class="start-menu" id="startMenu" hidden>
+      <a href="store/">Enter the Silly Store</a>
+      <button type="button" data-open="win-2048">Play 2048</button>
+      <button type="button" data-open="win-facts">Read a random fact</button>
+      <a href="https://irisbahar.github.io/IrisBaharWebsite/">Dr. Iris Bahar's website</a>
+      <a href="https://github.com/smwasserman/smwasserman.github.io">This site on GitHub</a>
     </div>
-
+    <nav class="tasks" aria-label="Open windows"></nav>
+    <time class="clock" id="clock"></time>
+  </footer>
 </body>
 </html>

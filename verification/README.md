@@ -1,3 +1,3 @@
 URL checked: https://smwasserman.github.io
-When: 2026-09-22 21:42 MDT
-What would have made this fail: It would have 404'd if I had kept the site in `src/` like the reference copy, because GitHub Pages serves from the repo root and there would have been no `index.html` there.
+When: 2026-09-22 22:27 MDT
+What would have made this fail: If GitHub Pages were still serving the previous deploy, the page body in `fetch.txt` would not have matched my local `index.html` from commit `2851b34`.
