@@ -14,34 +14,50 @@ const LINES = {
 };
 
 // Slide one line toward its start. Each tile merges at most once per move.
+// sources[k] lists the positions (in the input line) of the tiles that end up at position k.
 function slideLine(values) {
-    const tiles = values.filter(Boolean);
+    const tiles = [];
+    values.forEach((value, pos) => {
+        if (value) tiles.push({ value, pos });
+    });
     const line = [];
+    const sources = [];
     let gained = 0;
     for (let i = 0; i < tiles.length; i++) {
-        if (tiles[i] === tiles[i + 1]) {
-            line.push(tiles[i] * 2);
-            gained += tiles[i] * 2;
+        const next = tiles[i + 1];
+        if (next && next.value === tiles[i].value) {
+            line.push(tiles[i].value * 2);
+            sources.push([tiles[i].pos, next.pos]);
+            gained += tiles[i].value * 2;
             i++;
         } else {
-            line.push(tiles[i]);
+            line.push(tiles[i].value);
+            sources.push([tiles[i].pos]);
         }
     }
     while (line.length < SIZE) line.push(0);
-    return { line, gained };
+    return { line, gained, sources };
 }
 
+// Returns the new board, the points gained, whether anything moved,
+// and where every tile went: { from, to, merged } in board indices.
 function move(board, dir) {
     const next = board.slice();
+    const moves = [];
     let gained = 0;
     for (const indices of LINES[dir]) {
         const result = slideLine(indices.map(i => board[i]));
         result.line.forEach((value, k) => {
             next[indices[k]] = value;
         });
+        result.sources.forEach((from, k) => {
+            from.forEach(pos => {
+                moves.push({ from: indices[pos], to: indices[k], merged: from.length === 2 });
+            });
+        });
         gained += result.gained;
     }
-    return { board: next, gained, moved: next.some((value, i) => value !== board[i]) };
+    return { board: next, gained, moved: next.some((value, i) => value !== board[i]), moves };
 }
 
 function canMove(board) {
@@ -63,17 +79,18 @@ function addTile(board, random = Math.random) {
 
 function startGame(root) {
     const boardEl = root.querySelector('.board');
+    const tileLayer = root.querySelector('.tiles');
     const scoreEl = root.querySelector('.score');
     const bestEl = root.querySelector('.best');
-    const statusEl = root.querySelector('.game-status');
-    const cells = Array.from({ length: SIZE * SIZE }, () => {
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        boardEl.appendChild(cell);
-        return cell;
-    });
+    const messageEl = root.querySelector('.game-message');
+    const messageText = root.querySelector('.game-message-text');
+    const keepGoingButton = root.querySelector('.keep-going');
+    const SLIDE_MS = 100;
+    const calm = matchMedia('(prefers-reduced-motion: reduce)');
 
-    let board, score, won, over;
+    let board, score, won, over, paused;
+    let tileEls = [];
+    let pending = null;
     let best = 0;
     try {
         best = Number(localStorage.getItem('best2048')) || 0;
@@ -81,34 +98,75 @@ function startGame(root) {
         // Storage blocked: the best score lasts for this visit only
     }
 
-    function render(newIndex) {
-        cells.forEach((cell, i) => {
-            const value = board[i];
-            cell.textContent = value || '';
-            cell.dataset.value = value;
-            cell.classList.toggle('is-big', value > 2048);
-            cell.classList.toggle('is-new', i === newIndex);
+    function place(el, index) {
+        el.style.setProperty('--row', Math.floor(index / SIZE));
+        el.style.setProperty('--col', index % SIZE);
+    }
+
+    // Draw every tile from scratch at its resting position
+    function drawTiles(merged = new Set(), newIndex = -1) {
+        tileLayer.replaceChildren();
+        tileEls = board.map((value, i) => {
+            if (!value) return null;
+            const el = document.createElement('div');
+            el.className = 'tile';
+            el.textContent = value;
+            el.dataset.value = value > 2048 ? 'super' : value;
+            el.dataset.digits = String(value).length;
+            place(el, i);
+            if (merged.has(i)) el.classList.add('is-merged');
+            if (i === newIndex) el.classList.add('is-new');
+            tileLayer.appendChild(el);
+            return el;
         });
         scoreEl.textContent = score;
         bestEl.textContent = best;
     }
 
+    // If tiles are still sliding, jump them to where they're going
+    function finishSlide() {
+        if (!pending) return;
+        clearTimeout(pending.timer);
+        const { merged, newIndex } = pending;
+        pending = null;
+        drawTiles(merged, newIndex);
+    }
+
+    function showMessage(text, canKeepGoing) {
+        paused = true;
+        keepGoingButton.hidden = !canKeepGoing;
+        messageEl.hidden = false;
+        messageText.textContent = text;
+        (canKeepGoing ? keepGoingButton : root.querySelector('.try-again')).focus();
+    }
+
+    function hideMessage() {
+        paused = false;
+        messageEl.hidden = true;
+    }
+
     function newGame() {
+        finishSlide();
         board = new Array(SIZE * SIZE).fill(0);
         score = 0;
         won = false;
         over = false;
+        hideMessage();
         board = addTile(board).board;
         const second = addTile(board);
         board = second.board;
-        statusEl.textContent = '';
-        render(second.index);
+        drawTiles(new Set(), second.index);
     }
 
     function step(dir) {
-        if (over) return;
+        if (over || paused) return;
+        finishSlide();
         const result = move(board, dir);
         if (!result.moved) return;
+
+        // Slide the existing tiles to where they end up
+        result.moves.forEach(({ from, to }) => place(tileEls[from], to));
+
         const added = addTile(result.board);
         board = added.board;
         score += result.gained;
@@ -120,15 +178,24 @@ function startGame(root) {
                 // Storage blocked: nothing to save to
             }
         }
+        scoreEl.textContent = score;
+        bestEl.textContent = best;
+
+        const merged = new Set(result.moves.filter(m => m.merged).map(m => m.to));
+        pending = { merged, newIndex: added.index, timer: null };
+        if (calm.matches) {
+            finishSlide();
+        } else {
+            pending.timer = setTimeout(finishSlide, SLIDE_MS);
+        }
+
         if (!won && board.includes(2048)) {
             won = true;
-            statusEl.textContent = 'You made 2048! Keep going if you like.';
-        }
-        if (!canMove(board)) {
+            showMessage('You win!', true);
+        } else if (!canMove(board)) {
             over = true;
-            statusEl.textContent = `No moves left. Final score: ${score}. Press New game to play again.`;
+            showMessage(`Game over! You scored ${score}.`, false);
         }
-        render(added.index);
     }
 
     const KEYS = {
@@ -145,6 +212,7 @@ function startGame(root) {
     // Swipes (touch, pen or mouse drag) on the board
     let start = null;
     boardEl.addEventListener('pointerdown', e => {
+        if (e.target.closest('button')) return;
         start = { x: e.clientX, y: e.clientY };
         boardEl.focus();
     });
@@ -167,7 +235,22 @@ function startGame(root) {
     root.querySelectorAll('[data-dir]').forEach(button => {
         button.addEventListener('click', () => step(button.dataset.dir));
     });
-    root.querySelector('.new-game').addEventListener('click', newGame);
+    root.querySelectorAll('.new-game, .try-again').forEach(button => {
+        button.addEventListener('click', () => {
+            newGame();
+            boardEl.focus();
+        });
+    });
+    keepGoingButton.addEventListener('click', () => {
+        hideMessage();
+        // The winning move may also have been the last possible one
+        if (!canMove(board)) {
+            over = true;
+            showMessage(`Game over! You scored ${score}.`, false);
+            return;
+        }
+        boardEl.focus();
+    });
 
     newGame();
 }

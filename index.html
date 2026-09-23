@@ -7,7 +7,7 @@
   <title>Samuel Wasserman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Silkscreen&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Bungee&family=Caveat:wght@600;700&family=Silkscreen&family=VT323&display=swap">
   <link rel="stylesheet" href="style.css">
   <script src="js/2048.js" defer></script>
   <script src="js/home.js" defer></script>
@@ -40,7 +40,7 @@
         </header>
         <div class="window-body">
           <h1>Samuel Wasserman</h1>
-          <p class="intro">I'm learning to build software by directing AI coding agents. This site is where I put what I make.</p>
+          <p class="intro">Welcome to my corner of the internet. There's a terrible store, a game of 2048, and more facts than anyone asked for.</p>
           <p>It's built like a computer from 1998 because that's when the web was at its most personal: everyone had a homepage, and every homepage was a little strange. Drag the windows around, close them, reopen them from the desktop.</p>
           <div class="counter">
             <span>Your visits to this page</span>
@@ -71,7 +71,7 @@
         </header>
         <div class="window-body">
           <h2>Silly Samuel's Silly Store</h2>
-          <p>An online store for AI air fryers and DVDs of Norbit, designed to be as hard to use as possible. It breaks twelve rules of good interface design on purpose: runaway login buttons, a "Remove" button that adds items, 99,451 zip codes in random order, and a checkout that charges you a mandatory tip.</p>
+          <p>An online store for air fryers and DVDs of Norbit, designed to be as hard to use as possible. It breaks twelve rules of good interface design on purpose: runaway login buttons, a "Remove" button that adds items, 99,451 zip codes in random order, and a checkout that charges you a mandatory tip.</p>
           <p>You can still log in (username <kbd>name</kbd>, password <kbd>12345</kbd>), shop, and check out. It just fights you the whole way. Every store page has an <em>Explain the bad UX</em> switch in the bottom-left corner that marks each broken rule and says what it breaks.</p>
           <p class="warning"><strong>Warning:</strong> the store has flashing, spinning and shaking content. You'll be asked about animations before it loads, and you can switch them off from any page.</p>
           <a class="btn btn-big" href="store/">Enter the store</a>
@@ -83,21 +83,53 @@
           <span class="title" id="t-2048">2048.exe</span>
           <button type="button" class="close" aria-label="Close 2048.exe">&times;</button>
         </header>
-        <div class="window-body" id="game2048">
-          <div class="scores">
-            <p>Score <output class="score">0</output></p>
-            <p>Best <output class="best">0</output></p>
-            <button type="button" class="btn new-game">New game</button>
+        <div class="window-body game" id="game2048">
+          <div class="game-top">
+            <p class="game-title">2048</p>
+            <div class="scores">
+              <p class="score-box">Score <output class="score">0</output></p>
+              <p class="score-box">Best <output class="best">0</output></p>
+            </div>
           </div>
-          <div class="board" tabindex="0" aria-label="2048 board. Click here, then use the arrow keys or W, A, S, D to slide the tiles." aria-describedby="gameHelp"></div>
-          <p class="game-status" aria-live="polite"></p>
-          <div class="dpad" aria-label="Slide tiles">
-            <button type="button" class="btn" data-dir="up" aria-label="Slide up">&uarr;</button>
-            <button type="button" class="btn" data-dir="left" aria-label="Slide left">&larr;</button>
-            <button type="button" class="btn" data-dir="down" aria-label="Slide down">&darr;</button>
-            <button type="button" class="btn" data-dir="right" aria-label="Slide right">&rarr;</button>
+          <div class="game-bar">
+            <p>Join the tiles, get to <strong>2048!</strong></p>
+            <button type="button" class="game-btn new-game">New game</button>
           </div>
-          <p class="help" id="gameHelp">Slide the tiles with the arrow keys, W A S D, a swipe, or the buttons. Equal tiles merge. Make a 2048 tile to win.</p>
+          <div class="board" tabindex="0" aria-label="2048 board" aria-describedby="gameHelp">
+            <div class="grid" aria-hidden="true">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="tiles"></div>
+            <div class="game-message" hidden>
+              <p class="game-message-text" role="status"></p>
+              <div class="game-message-buttons">
+                <button type="button" class="game-btn keep-going">Keep going</button>
+                <button type="button" class="game-btn try-again">Try again</button>
+              </div>
+            </div>
+          </div>
+          <div class="dpad" role="group" aria-label="Slide tiles">
+            <button type="button" class="game-btn" data-dir="up" aria-label="Slide up">&uarr;</button>
+            <button type="button" class="game-btn" data-dir="left" aria-label="Slide left">&larr;</button>
+            <button type="button" class="game-btn" data-dir="down" aria-label="Slide down">&darr;</button>
+            <button type="button" class="game-btn" data-dir="right" aria-label="Slide right">&rarr;</button>
+          </div>
+          <p class="help" id="gameHelp">Click the board, then use the arrow keys or W A S D. You can also swipe or use the buttons. Tiles with the same number merge into one.</p>
         </div>
       </section>
 
@@ -112,7 +144,6 @@
             <tr><th scope="row">Pages</th><td>7: this one, a 404 page, and 5 store pages</td></tr>
             <tr><th scope="row">Frameworks</th><td>0. Plain HTML, CSS and JavaScript</td></tr>
             <tr><th scope="row">Hosted on</th><td>GitHub Pages</td></tr>
-            <tr><th scope="row">Built with</th><td>Claude Code, directed by me</td></tr>
             <tr><th scope="row">Buttons on the store's front page</th><td>34, and 4 of them work</td></tr>
             <tr><th scope="row">Login buttons</th><td>17, and 1 of them is real</td></tr>
             <tr><th scope="row">Zip codes at checkout</th><td>99,451, shuffled</td></tr>
@@ -138,7 +169,7 @@
           <div class="badges" aria-label="Badges">
             <span class="badge badge-browser">Best viewed with any browser</span>
             <span class="badge badge-pages">Hosted on GitHub Pages</span>
-            <span class="badge badge-claude">Built with Claude Code</span>
+            <span class="badge badge-frameworks">0 frameworks used</span>
             <span class="badge badge-construction">Under construction</span>
           </div>
         </div>

@@ -13,11 +13,16 @@
   --tomato: #e0482a;
   --mustard: #f2b61b;
   --mint: #2fa37a;
+  --purple: #6a3fc9;
+  --pink: #c2367f;
   --chrome: #c9c3b0;
   --chrome-text: #1c1d22;
   --display: "Bricolage Grotesque", system-ui, sans-serif;
   --body: "Atkinson Hyperlegible", system-ui, sans-serif;
   --pixel: "Silkscreen", ui-monospace, monospace;
+  --wordart: "Bungee", "Bricolage Grotesque", system-ui, sans-serif;
+  --lcd: "VT323", ui-monospace, monospace;
+  --hand: "Caveat", "Comic Sans MS", cursive;
   --shadow: 5px 5px 0 var(--ink);
   color-scheme: light;
 }
@@ -69,9 +74,15 @@ h2 {
   margin: 0 0 0.75rem;
 }
 
+/* The name is set like 90s WordArt: chunky letters with stacked color shadows */
 h1 {
-  font-size: clamp(2.5rem, 7vw, 4.25rem);
-  letter-spacing: -0.03em;
+  font-family: var(--wordart);
+  font-weight: 400;
+  font-size: clamp(2rem, 5.4vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--cobalt);
+  text-shadow: 3px 3px 0 var(--mustard), 6px 6px 0 var(--tomato);
+  margin-bottom: 1.1rem;
 }
 
 h2 {
@@ -203,19 +214,22 @@ kbd {
   user-select: none;
 }
 
-.window.is-active .titlebar {
-  color: #ffffff;
-}
+/* Every window has its own colors. The active window gets the bigger shadow. */
+.win-about .titlebar { background: var(--cobalt); color: #ffffff; }
+.win-facts .titlebar { background: var(--mustard); color: #1c1d22; }
+.win-2048 .titlebar { background: #8f7a66; color: #ffffff; }
+.win-system .titlebar { background: var(--purple); color: #ffffff; }
+.win-links .titlebar { background: var(--pink); color: #ffffff; }
 
-.win-about.is-active .titlebar { background: var(--cobalt); }
-.win-facts.is-active .titlebar { background: var(--mint); }
-.win-2048.is-active .titlebar { background: var(--tomato); }
-.win-system.is-active .titlebar { background: var(--ink); }
-.win-links.is-active .titlebar { background: var(--cobalt); }
+.win-facts .window-body { background: #fff3a8; }
+.win-system .window-body { background: #f4efff; }
+.win-links .window-body { background: #ffeef6; }
+
+.win-system h2 { color: var(--purple); }
+.win-links h2 { color: var(--pink); }
 
 /* The store window keeps the caution tape from the store itself */
-.win-store .titlebar,
-.win-store.is-active .titlebar {
+.win-store .titlebar {
   background: repeating-linear-gradient(-45deg, var(--mustard) 0 14px, #1c1d22 14px 28px);
 }
 
@@ -304,18 +318,31 @@ kbd {
 }
 
 .counter output {
-  padding: 2px 8px;
+  padding: 0 8px;
   background: #1c1d22;
   color: #6cf07a;
-  font-family: var(--pixel);
-  font-size: 1.05rem;
-  letter-spacing: 0.12em;
+  font-family: var(--lcd);
+  font-size: 1.7rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
 }
 
 /* Facts */
+/* The facts window is a sticky note, so it's handwritten */
+.win-facts h2 {
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 2.4rem;
+  letter-spacing: 0;
+  color: #1c1d22;
+}
+
 .fact {
-  min-height: 7.5em;
-  font-size: 1.15rem;
+  min-height: 5.5em;
+  font-family: var(--hand);
+  font-weight: 600;
+  font-size: 1.65rem;
+  line-height: 1.25;
 }
 
 .fact-footer {
@@ -380,116 +407,239 @@ th {
 
 .badge-browser { background: #1c1d22; color: #6cf07a; }
 .badge-pages { background: var(--cobalt); color: #ffffff; }
-.badge-claude { background: #f1eee4; color: #1c1d22; }
+.badge-frameworks { background: #f1eee4; color: #1c1d22; }
 .badge-construction {
   background: repeating-linear-gradient(-45deg, var(--mustard) 0 6px, #1c1d22 6px 12px);
   color: #1c1d22;
   text-shadow: 0 0 3px var(--mustard), 0 0 3px var(--mustard);
 }
 
-/* 2048 */
+/* 2048, in the colors and type of the original game */
+.game {
+  --g-text: #776e65;
+  --g-light: #f9f6f2;
+  --g-board: #bbada0;
+  --gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #faf8ef;
+  color: var(--g-text);
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.game > * {
+  width: 100%;
+  max-width: 400px;
+}
+
+.game-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-title {
+  margin: 0;
+  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
 .scores {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 6px;
 }
 
-.scores p {
+.score-box {
+  min-width: 64px;
   margin: 0;
-  padding: 2px 10px;
-  background: #1c1d22;
-  color: #ffffff;
-  font-family: var(--pixel);
+  padding: 4px 12px;
+  background: var(--g-board);
+  border-radius: 3px;
+  color: #eee4da;
   font-size: 0.75rem;
-}
-
-.scores output {
-  display: block;
-  font-family: var(--body);
-  font-size: 1.15rem;
   font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.new-game {
-  margin-left: auto;
+.score-box output {
+  display: block;
+  color: #ffffff;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.game-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.game-bar p {
+  margin: 0;
+}
+
+.game-btn {
+  padding: 8px 16px;
+  background: #8f7a66;
+  color: var(--g-light);
+  border: none;
+  border-radius: 3px;
+  font: 700 1rem/1.2 "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.game-btn:hover {
+  background: #7f6a56;
+}
+
+.game-btn:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 2px;
 }
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  max-width: 360px;
-  padding: 8px;
-  background: #b5ad97;
-  border: 2px solid var(--ink);
+  position: relative;
+  padding: var(--gap);
+  background: var(--g-board);
+  border-radius: 6px;
+  container-type: inline-size;
   touch-action: none;
+  user-select: none;
 }
 
-.cell {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+.grid div {
+  aspect-ratio: 1;
+  background: rgba(238, 228, 218, 0.35);
+  border-radius: 3px;
+}
+
+/* Tiles sit on a layer over the empty grid and slide between cells */
+.tiles {
+  position: absolute;
+  inset: var(--gap);
+}
+
+.tile {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: calc((100% - 3 * var(--gap)) / 4);
   aspect-ratio: 1;
-  background: #cec7b2;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.1rem, 5vw, 1.9rem);
-  color: #1c1d22;
+  border-radius: 3px;
+  background: #eee4da;
+  color: var(--g-light);
+  font-weight: 700;
+  font-size: 11cqw;
+  line-height: 1;
+  translate: calc(var(--col) * (100% + var(--gap))) calc(var(--row) * (100% + var(--gap)));
+  transition: translate 100ms ease-in-out;
 }
 
-.cell[data-value="2"] { background: #f7f3e6; }
-.cell[data-value="4"] { background: #efe4c5; }
-.cell[data-value="8"] { background: #f2b61b; }
-.cell[data-value="16"] { background: #f0912b; }
-.cell[data-value="32"] { background: #e0482a; color: #ffffff; }
-.cell[data-value="64"] { background: #b8321a; color: #ffffff; }
-.cell[data-value="128"] { background: #2fa37a; color: #ffffff; }
-.cell[data-value="256"] { background: #1f7d5c; color: #ffffff; }
-.cell[data-value="512"] { background: #2e55d9; color: #ffffff; }
-.cell[data-value="1024"] { background: #1e3ba8; color: #ffffff; }
-.cell[data-value="2048"] { background: #1c1d22; color: #f2b61b; }
-.cell.is-big { background: #1c1d22; color: #ffffff; }
+.tile[data-digits="3"] { font-size: 9.5cqw; }
+.tile[data-digits="4"] { font-size: 7.5cqw; }
+.tile[data-digits="5"] { font-size: 6cqw; }
+.tile[data-digits="6"] { font-size: 5cqw; }
 
-.cell[data-value="128"],
-.cell[data-value="256"],
-.cell[data-value="512"] {
-  font-size: clamp(1rem, 4vw, 1.6rem);
+.tile[data-value="2"] { background: #eee4da; color: var(--g-text); }
+.tile[data-value="4"] { background: #ede0c8; color: var(--g-text); }
+.tile[data-value="8"] { background: #f2b179; }
+.tile[data-value="16"] { background: #f59563; }
+.tile[data-value="32"] { background: #f67c5f; }
+.tile[data-value="64"] { background: #f65e3b; }
+.tile[data-value="128"] { background: #edcf72; }
+.tile[data-value="256"] { background: #edcc61; }
+.tile[data-value="512"] { background: #edc850; }
+.tile[data-value="1024"] { background: #edc53f; }
+.tile[data-value="2048"] { background: #edc22e; }
+.tile[data-value="super"] { background: #3c3a32; }
+
+.tile.is-new {
+  animation: tile-appear 200ms ease;
 }
 
-.cell[data-value="1024"],
-.cell[data-value="2048"],
-.cell.is-big {
-  font-size: clamp(0.85rem, 3.2vw, 1.3rem);
+.tile.is-merged {
+  animation: tile-pop 200ms ease;
 }
 
-.cell.is-new {
-  animation: pop 0.15s ease-out;
-}
-
-@keyframes pop {
+@keyframes tile-appear {
   from {
-    scale: 0.6;
+    opacity: 0;
+    scale: 0;
   }
 }
 
-.game-status {
-  min-height: 1.55em;
-  margin: 10px 0 6px;
+@keyframes tile-pop {
+  50% {
+    scale: 1.2;
+  }
+}
+
+.game-message {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: rgba(238, 228, 218, 0.88);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.game-message[hidden] {
+  display: none;
+}
+
+.game-message-text {
+  margin: 0;
+  padding: 0 12px;
+  font-size: clamp(1.6rem, 9cqw, 2.6rem);
   font-weight: 700;
+  line-height: 1.2;
+}
+
+.game-message-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.game-message-buttons [hidden] {
+  display: none;
 }
 
 .dpad {
   display: grid;
-  grid-template-columns: repeat(3, 44px);
+  grid-template-columns: repeat(3, 48px);
   grid-template-areas: ". up ." "left down right";
+  justify-content: center;
   gap: 6px;
-  margin-bottom: 12px;
+  margin: 16px 0 12px;
 }
 
-.dpad .btn {
-  padding: 6px 0;
-  font-size: 1.1rem;
+.dpad .game-btn {
+  padding: 8px 0;
+  font-size: 1.2rem;
 }
 
 .dpad [data-dir="up"] { grid-area: up; }
@@ -499,7 +649,6 @@ th {
 
 .help {
   margin: 0;
-  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -602,10 +751,12 @@ th {
 .clock {
   flex: none;
   margin-left: auto;
-  padding: 5px 10px;
+  padding: 0 10px;
   border: 2px solid var(--ink);
-  background: #f1eee4;
-  color: #1c1d22;
+  background: #1c1d22;
+  color: #6cf07a;
+  font-family: var(--lcd);
+  font-size: 1.4rem;
 }
 
 /* Small screens: no dragging, windows stack in one column */
@@ -644,8 +795,9 @@ th {
 
 @media (prefers-reduced-motion: reduce) {
   .new,
-  .cell.is-new {
-    animation: none;
+  .tile {
+    animation: none !important;
+    transition: none;
   }
 }
 
