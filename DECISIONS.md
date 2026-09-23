@@ -55,7 +55,13 @@ If it genuinely never happened, say so plainly, and then say what you would have
 check in order to notice. Being honest here costs you far less than a story you cannot
 defend when you record your video.
 
-*Your answer here. (Question 3 is yours to write, in your own words.)*
+The agent messed up the styling and design of the index page, and 2048 didn't work right, so I had to redirect it.
+
+**What it did:** Its first version of the retro homepage wasn't what I wanted: the fonts and colors were too plain for the late-90s look I was going for. Its first version of 2048 didn't render correctly on the live site on GitHub Pages. Even apart from that, it didn't look like 2048. The colors jumped from orange to green to blue instead of the real game's beige-to-gold, the tiles teleported instead of sliding, and the board sat off to one side with a big empty gap under it.
+
+**How I noticed:** I opened the live site myself. The agent had tested the game's logic and tested the page in a browser on its local server. After pushing, it checked that the live files matched mine and loaded without errors. But it never looked at the live page in a browser, so it didn't catch that the game wasn't rendering there.
+
+**What I did instead:** I told it 2048 didn't look right and to fix it, and to add more interesting fonts and colors to the homepage and make no mistakes. It rebuilt 2048 in the original game's colors with sliding tiles and win and game-over messages. It also redid the homepage with a WordArt-style name, a handwritten sticky note for the facts, and a different color for every window.
 
 ---
 
