@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Silly Samuel's Silly Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header>
+        <h1>Silly Samuel's Silly Store</h1>
+        <p>Login to your account</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Browse Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Annoying scrolling banner -->
+        <marquee behavior="scroll" direction="left" scrollamount="12" class="login-marquee-top">
+            🔒 SECURE LOGIN! 🔒 Your data is probably safe! 🔒 Trust us! 🔒 We use encryption (maybe)! 🔒
+        </marquee>
+
+        <!-- Random GIFs -->
+        <div class="login-gif-container">
+            <img src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif" alt="login">
+            <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="security">
+            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="dog">
+        </div>
+
+        <!-- Fake Security Badges -->
+        <div class="fake-security-section">
+            <h3>🔐 100% SECURE LOGIN GUARANTEED! 🔐</h3>
+            <div class="security-badges">
+                <div class="security-badge">🛡️ SSL Encrypted<br>(Trust Us)</div>
+                <div class="security-badge">✓ Verified Safe<br>(Trust Us)</div>
+                <div class="security-badge">🔒 Bank-Level<br>Security*</div>
+                <div class="security-badge">⭐ A+ Rating<br>(Made Up)</div>
+            </div>
+            <p class="small-disclaimer">*Not affiliated with any actual banks</p>
+        </div>
+
+        <section id="login">
+            <h2 class="blink">Account Login</h2>
+            <form id="loginForm">
+                <div id="field1" class="form-field-container">
+                    <div class="form-group">
+                        <label for="username" id="usernameLabel">Username:</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter password here">
+                    </div>
+                </div>
+                <div id="field2" class="form-field-container">
+                    <div class="form-group">
+                        <label for="password" id="passwordLabel">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter username here">
+                    </div>
+                </div>
+
+                <div id="captchaChallenge">
+                    <h3 id="captchaQuestion"></h3>
+                    <input type="text" id="captchaAnswer" placeholder="Your answer">
+                </div>
+
+                <!-- Fake Links -->
+                <div class="fake-links-section">
+                    <a onclick="showFakeError()">Forgot Password?</a>
+                    <a onclick="showFakeError()">Create New Account</a>
+                    <a onclick="showFakeError()">Reset Username</a>
+                    <a onclick="showFakeError()">Unlock Account</a>
+                    <a onclick="showFakeError()">Change Email</a>
+                </div>
+
+                <!-- More Fake Buttons (with real one hidden among them) -->
+                <div class="more-fake-buttons" id="buttonContainer">
+                    <button type="button" class="fake-button fake-button-1" onclick="showFakeError()">Log Out</button>
+                    <button type="button" class="fake-button fake-button-2" onclick="showFakeError()">Submit</button>
+                    <button type="button" class="fake-button fake-button-3" onclick="showFakeError()">Sign In</button>
+                    <button type="button" class="fake-button fake-button-4" onclick="showFakeError()">Login Now</button>
+                    <button type="button" class="fake-button fake-button-5" onclick="showFakeError()">Enter</button>
+                    <button type="submit" id="loginButton" class="fake-button fake-button-real">Log in</button>
+                    <button type="button" class="fake-button fake-button-6" onclick="showFakeError()">Access Account</button>
+                    <button type="button" class="fake-button fake-button-7" onclick="showFakeError()">Authenticate</button>
+                    <button type="button" class="fake-button fake-button-8" onclick="showFakeError()">Verify</button>
+                    <button type="button" class="fake-button" onclick="showFakeError()">Confirm</button>
+                    <button type="button" class="fake-button" onclick="showFakeError()">Proceed</button>
+                    <button type="button" class="fake-button fake-button-1" onclick="showFakeError()">Sign Up</button>
+                    <button type="button" class="fake-button fake-button-2" onclick="showFakeError()">Continue</button>
+                    <button type="button" class="fake-button fake-button-3" onclick="showFakeError()">Accept</button>
+                    <button type="button" class="fake-button fake-button-4" onclick="showFakeError()">Approve</button>
+                    <button type="button" class="fake-button fake-button-5" onclick="showFakeError()">Login</button>
+                    <button type="button" class="fake-button fake-button-6" onclick="showFakeError()">Log In</button>
+                </div>
+            </form>
+            <p id="loginMessage"></p>
+            <p id="attemptCounter" class="small-disclaimer"></p>
+
+        </section>
+
+        <!-- Social Media Login Options (All Fake) -->
+        <div class="social-login-section">
+            <h3 class="spinning">🌐 OR LOGIN WITH SOCIAL MEDIA! 🌐</h3>
+            <p>Quick and easy! (Doesn't actually work)</p>
+            <div class="social-buttons-grid">
+                <button type="button" class="social-btn social-btn-facebook" onclick="showFakeError()">📘 Login with Facebook</button>
+                <button type="button" class="social-btn social-btn-google" onclick="showFakeError()">🔍 Login with Google</button>
+                <button type="button" class="social-btn social-btn-twitter" onclick="showFakeError()">🐦 Login with Twitter</button>
+                <button type="button" class="social-btn social-btn-linkedin" onclick="showFakeError()">💼 Login with LinkedIn</button>
+                <button type="button" class="social-btn social-btn-github" onclick="showFakeError()">🐙 Login with GitHub</button>
+                <button type="button" class="social-btn social-btn-apple" onclick="showFakeError()">🍎 Login with Apple</button>
+                <button type="button" class="social-btn social-btn-yahoo" onclick="showFakeError()">Y! Login with Yahoo</button>
+            </div>
+        </div>
+
+        <!-- Alternative Login Methods -->
+        <div class="alternative-login-section">
+            <h3>🔑 ALTERNATIVE LOGIN METHODS 🔑</h3>
+            <div class="alternative-buttons">
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Fingerprint</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Face ID</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Retina Scan</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Voice</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with QR Code</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with SMS</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Email Link</button>
+                <button type="button" class="btn-alternative" onclick="showFakeError()">Login with Magic Link</button>
+            </div>
+        </div>
+
+        <!-- Newsletter Signup (Fake) -->
+        <div class="newsletter-signup-section">
+            <h3 class="blink">📧 SUBSCRIBE FOR LOGIN TIPS! 📧</h3>
+            <p>Get daily emails on how to remember your password!</p>
+            <input type="email" class="newsletter-input" placeholder="Enter your email...">
+            <br>
+            <button type="button" class="btn-newsletter" onclick="showFakeError()">SUBSCRIBE NOW!</button>
+        </div>
+
+        <!-- More Random GIFs -->
+        <div class="login-gif-container">
+            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="rainbow">
+            <img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" alt="typing">
+            <img src="https://media.giphy.com/media/l2R06WPHU6qRcZTSo/giphy.gif" alt="computer">
+        </div>
+
+        <!-- Bottom Marquee -->
+        <marquee behavior="scroll" direction="right" scrollamount="10" class="login-marquee-bottom">
+            ⚡ Having trouble logging in? Just keep trying! ⚡ Success rate: 0.1%! ⚡ Average attempts: 47! ⚡
+        </marquee>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silly Samuel's Silly Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Fake Success Modal -->
+    <div id="fakeSuccessModal" class="fake-success-modal">
+        <div class="fake-success-content">
+            <h2>✅ LOGIN SUCCESSFUL! ✅</h2>
+            <p>Just kidding! Please try again.</p>
+            <p class="hint-text">Hint: The real login button is somewhere on this page...</p>
+            <button onclick="closeFakeSuccess()" class="btn-close-fake-success">Close</button>
+        </div>
+    </div>
+
+    <!-- Fake Loading Overlay -->
+    <div id="fakeLoading" class="fake-loading">
+        <h3>Authenticating...</h3>
+        <div class="fake-loading-spinner"></div>
+        <p>Please wait while we pretend to verify your credentials...</p>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

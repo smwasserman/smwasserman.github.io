@@ -1,23 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Silliest Site on the Internet">
+    <title>Silly Samuel's Silly Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <script src="js/homepage.js"></script>
 </head>
 <body>
+    <header>
+        <h1 class="rainbow-fast">Silly Samuel's Silly Store</h1>
+        <p>Check out our silly products!</p>
+    </header>
 
-  <h1>Hello, world.</h1>
+    <main>
+        <!-- Banner Carousel -->
+        <div id="bannerCarousel">
+            <div class="banner-slide banner-slide-1">
+                <h2 class="blink">🔥 FLASH SALE! 90% OFF EVERYTHING! 🔥</h2>
+                <p>*Discount may not be applied at checkout</p>
+            </div>
+            <div class="banner-slide banner-slide-2">
+                <h2>⭐ RATED #1 BY OURSELVES! ⭐</h2>
+            </div>
+            <div class="banner-slide banner-slide-3">
+                <h2 class="spinning">🎬 NORBIT: THE MOVIE OF THE CENTURY! 🎬</h2>
+            </div>
+            <div class="banner-slide banner-slide-4">
+                <h2>🚨 ONLY 3 LEFT IN STOCK!🚨</h2>
+            </div>
+            <div class="banner-slide banner-slide-5">
+                <h2>💰 BUY NOW, REGRET LATER! 💰</h2>
+            </div>
+        </div>
 
-  <p>
-    This page is live. That is the only thing it is here to prove.
-  </p>
+        <!-- Scrolling Marquee Text -->
+        <marquee behavior="scroll" direction="left" scrollamount="10" class="marquee-news">
+            ⚡ BREAKING NEWS: Scientists discover airfryers can solve world peace! ⚡ ORDER NOW! ⚡ LIMITED TIME ONLY! ⚡ FREE SHIPPING* (*with purchase of $1000 or more)
+        </marquee>
 
-  <p>
-    Everything about it is yours to delete. Open Claude Code in this folder and
-    tell it what you actually want to build.
-  </p>
+        <section id="home">
+            <h2 class="blink">Welcome to Silly Samuel's Silly Store!</h2>
+            <p>Your one-stop shop for AI-powered airfryers and classic DVDs!</p>
+
+            <!-- Live Stats -->
+            <div class="live-stats">
+                <p class="live-stats-viewing">🔴 LIVE: <span id="viewingCount">0</span> people are viewing this page RIGHT NOW!</p>
+                <p class="live-stats-visitors">Total visitors today: <span id="visitorCount">0</span></p>
+            </div>
+        </section>
+
+        <!-- Random GIFs everywhere -->
+        <div class="gif-container">
+            <img src="https://i.pinimg.com/originals/37/e6/54/37e6546555565309406876ec766d5b05.gif" alt="monkey">
+            <img src="https://i.pinimg.com/originals/14/91/d7/1491d7c7f81981967d9cb1410ba13066.gif">
+            <img src="https://i.gifer.com/embedded/download/WczX.gif" alt="monkey">
+            <img src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="nyan">
+            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="guy">
+        </div>
+
+        <marquee behavior="scroll" direction="right" scrollamount="8" class="marquee-winner">
+            🎉 CONGRATULATIONS! You are our 1,000,000th visitor! Click anywhere to claim your prize! 🎉
+        </marquee>
+
+        <!-- More GIFs -->
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif" alt="spinning">
+            <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" alt="neon">
+            <img src="https://media.tenor.com/Kjucnm6ZrI0AAAAM/later-later-dude.gif" alt="stu">
+            <img src="https://media.tenor.com/wLTK-fVE75UAAAAM/dancingbaby.gif" alt="stu">
+        </div>
+
+        <!-- Fake Trust Badges -->
+        <div class="trust-badges-section">
+            <h3 class="spinning">🏆 TRUSTED BY MILLIONS! 🏆</h3>
+            <div class="trust-badges-container">
+                <div class="trust-badge trust-badge-1">⭐⭐⭐⭐⭐<br>5/5 Stars<br>(Sample: 1)</div>
+                <div class="trust-badge trust-badge-2">✓ BBB Accredited<br>(Not Really)</div>
+                <div class="trust-badge trust-badge-3">🔒 100% Secure<br>(Probably)</div>
+                <div class="trust-badge trust-badge-4">📺 As Seen On TV<br>(In Our Dreams)</div>
+                <div class="trust-badge trust-badge-5">🏅 Award Winning<br>(Made Up Award)</div>
+            </div>
+        </div>
+
+        <section id="featured">
+            <h2 class="blink">Featured Products</h2>
+            <p>Check out our amazing selection of AI-Powered Airfryers and Hillarious DVD Classics!</p>
+        </section>
+
+        <!-- Embedded Auto-Play Video -->
+        <div class="video-section">
+            <h3>📺 WATCH OUR PROMOTIONAL VIDEO! 📺</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HFIdZpc2L6w?si=_-VFxLZ3j0G5s6rq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <marquee behavior="alternate" direction="left" scrollamount="15" class="marquee-norbit">
+            ⬅️ BUY NORBIT NOW! ➡️ BUY NORBIT NOW! ⬅️ BUY NORBIT NOW! ➡️
+        </marquee>
+
+        <!-- Overwhelming Button Grid -->
+        <section class="quick-actions-section">
+            <h2 class="blink">🎯 QUICK ACTIONS 🎯</h2>
+            <div class="quick-actions-grid">
+                <button class="chaos-button">Subscribe Premium</button>
+                <button class="chaos-button">Download App</button>
+                <button class="chaos-button">Follow Twitter</button>
+                <button class="chaos-button">Follow Facebook</button>
+                <button class="chaos-button">Follow Instagram</button>
+                <a href="browse.html" class="chaos-button">Browse Products</a>
+                <button class="chaos-button">Follow TikTok</button>
+                <button class="chaos-button">Follow LinkedIn</button>
+                <button class="chaos-button">Follow Pinterest</button>
+                <button class="chaos-button">Take Survey</button>
+                <button class="chaos-button">Refer Friend</button>
+                <a href="cart.html" class="chaos-button">Cart</a>
+                <button class="chaos-button">Read Blog</button>
+                <button class="chaos-button">Watch Tutorial</button>
+                <button class="chaos-button">Contact Support</button>
+                <button class="chaos-button">Track Order</button>
+                <button class="chaos-button">Return Policy</button>
+                <button class="chaos-button">Privacy Policy</button>
+                <button class="chaos-button">Terms of Service</button>
+                <a href="index.html" class="chaos-button">Home</a>
+                <button class="chaos-button">Careers</button>
+                <button class="chaos-button">Press Release</button>
+                <button class="chaos-button">Investor Relations</button>
+                <button class="chaos-button">Partner With Us</button>
+                <button class="chaos-button">Become Affiliate</button>
+                <button class="chaos-button">Gift Cards</button>
+                <a href="login.html" class="chaos-button">Login</a>
+                <button class="chaos-button">Student Discount</button>
+                <button class="chaos-button">Military Discount</button>
+                <button class="chaos-button">Corporate Orders</button>
+                <button class="chaos-button">Wholesale Inquiry</button>
+                <button class="chaos-button">Report Bug</button>
+                <button class="chaos-button">Submit Feedback</button>
+                <button class="chaos-button">Join Beta Test</button>
+            </div>
+        </section>
+
+        <!-- More chaos -->
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat">
+            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="dog">
+            <img src="https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif" alt="more">
+        </div>
+    </main>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Browse Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <p>&copy; 2025 Silly Sales Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <div class="cookie-content">
+            <h3>🍪 WE USE COOKIES! 🍪</h3>
+            <p>
+                We use cookies, trackers, pixels, beacons, fingerprinting, and 847 other technologies to track everything you do online and sell it to the highest bidder! By continuing to use this site, you agree to let us do whatever we want with your data!
+            </p>
+            <div class="cookie-buttons">
+                <button onclick="acceptAllCookies()" class="btn-accept-cookies">Accept All (Recommended!)</button>
+                <button onclick="showCookieSettings()" class="btn-cookie-settings">Cookie Settings (Doesn't work)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Popup Modal -->
+    <div id="newsletterModal" class="newsletter-modal">
+        <div class="newsletter-content">
+            <h2>📧 SUBSCRIBE TO OUR NEWSLETTER! 📧</h2>
+            <p>
+                Get exclusive deals, spam, more spam, and occasionally useful information sent directly to your inbox 50 times per day!
+            </p>
+            <input type="email" placeholder="Enter your email..." class="newsletter-input">
+            <br>
+            <button onclick="submitNewsletter()" class="btn-newsletter-submit">SUBSCRIBE NOW!</button>
+            <button onclick="closeNewsletterPopup()" class="btn-newsletter-later">Maybe later (Will ask again in 15 seconds)</button>
+        </div>
+    </div>
+
+    <!-- Limited Time Deal Popup -->
+    <div id="dealModal" class="deal-modal">
+        <div class="deal-content">
+            <h2 class="blink">⏰ LIMITED TIME OFFER! ⏰</h2>
+            <p class="deal-countdown-text">
+                TIME REMAINING: <span id="dealCountdown" class="deal-countdown-time">5:00</span>
+            </p>
+            <p class="deal-description">
+                Get 95% OFF everything!* Act now before this once-in-a-lifetime opportunity expires!
+            </p>
+            <p class="deal-disclaimer">*Discount not actually applied. Offer resets every 5 minutes.</p>
+            <br>
+            <button onclick="window.location.href='browse.html'" class="btn-deal-shop">SHOP NOW!</button>
+            <br>
+            <button onclick="closeDealPopup()" class="btn-deal-close">Close (You'll regret this)</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbotWidget">
+        <div class="chatbot-header">
+            <h3>💬 Chat With Us!</h3>
+            <button onclick="minimizeChatbot()" class="btn-chatbot-close">X</button>
+        </div>
+        <p class="chatbot-message">
+            Hi there! 👋 I'm a bot! I can't actually help you, but I'll keep popping up to pretend I can! Want to buy Norbit?
+        </p>
+        <input type="text" placeholder="Type a message..." class="chatbot-input">
+        <button class="btn-chatbot-send">Send (Does nothing)</button>
+    </div>
 
 </body>
 </html>

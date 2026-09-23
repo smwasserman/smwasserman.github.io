@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Silly Samuel's Silly Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/checkout.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Silly Samuel's Silly Store</h1>
+        <p>Complete Your Purchase</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Browse Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="checkout">
+            <h2>Checkout</h2>
+
+            <div id="orderSummary">
+                <h3>Order Summary</h3>
+                <div id="checkoutItems"></div>
+                <div id="checkoutTotal"></div>
+            </div>
+
+            <form id="checkoutForm">
+                <h3>Shipping Information</h3>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Zip Code:</label>
+                    <select id="zipCode" name="zipCode" required>
+                        <option value="">Select your zip code (scroll to find yours)...</option>
+                        <!-- 99,000+ zip codes are generated in random order by js/checkout.js -->
+                    </select>
+                </div>
+
+                <h3>Payment Information</h3>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry">Expiry Date:</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+
+                <h3>Product Protection Insurance</h3>
+                <div id="insuranceOptions"></div>
+
+                <h3>Show Your Appreciation</h3>
+                <div class="form-group">
+                    <label for="tip">Tip Amount (Pre-selected for your convenience):</label>
+                    <input type="number" id="tip" name="tip" step="0.01" readonly>
+                </div>
+
+                <!-- Required Customer Survey -->
+                <div id="requiredSurvey" class="survey-section">
+                    <h3 class="blink">📋 REQUIRED: Complete Survey Before Checkout 📋</h3>
+                    <p class="survey-notice">*All fields are mandatory to proceed with your purchase</p>
+                    
+                    <div class="survey-progress">
+                        <p>Survey Progress: <span id="surveyProgress">0%</span></p>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hearAboutUs">How did you hear about us? *</label>
+                        <select id="hearAboutUs" name="hearAboutUs" required>
+                            <option value="">Please select one...</option>
+                            <option value="google">Google Search</option>
+                            <option value="bing">Bing Search</option>
+                            <option value="yahoo">Yahoo Search</option>
+                            <option value="askjeeves">Ask Jeeves</option>
+                            <option value="altavista">AltaVista</option>
+                            <option value="lycos">Lycos</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="twitter">Twitter/X</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="myspace">MySpace</option>
+                            <option value="friendster">Friendster</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="pinterest">Pinterest</option>
+                            <option value="snapchat">Snapchat</option>
+                            <option value="reddit">Reddit</option>
+                            <option value="tumblr">Tumblr</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="vimeo">Vimeo</option>
+                            <option value="dailymotion">DailyMotion</option>
+                            <option value="tv">TV Commercial</option>
+                            <option value="radio">Radio</option>
+                            <option value="newspaper">Newspaper</option>
+                            <option value="magazine">Magazine</option>
+                            <option value="billboard">Billboard</option>
+                            <option value="bus">Bus Advertisement</option>
+                            <option value="subway">Subway Advertisement</option>
+                            <option value="friend">Friend Recommendation</option>
+                            <option value="family">Family Recommendation</option>
+                            <option value="coworker">Coworker Recommendation</option>
+                            <option value="stranger">Stranger on the Street</option>
+                            <option value="dream">A Dream I Had</option>
+                            <option value="vision">A Vision</option>
+                            <option value="premonition">A Premonition</option>
+                            <option value="deja-vu">Déjà Vu</option>
+                            <option value="voices">The Voices in My Head</option>
+                            <option value="ouija">Ouija Board</option>
+                            <option value="tarot">Tarot Reading</option>
+                            <option value="fortune-cookie">Fortune Cookie</option>
+                            <option value="magic-8-ball">Magic 8-Ball</option>
+                            <option value="crystal-ball">Crystal Ball</option>
+                            <option value="tea-leaves">Tea Leaves</option>
+                            <option value="carrier-pigeon">Carrier Pigeon</option>
+                            <option value="smoke-signals">Smoke Signals</option>
+                            <option value="morse-code">Morse Code</option>
+                            <option value="skywriting">Skywriting</option>
+                            <option value="graffiti">Graffiti</option>
+                            <option value="bathroom-stall">Bathroom Stall Writing</option>
+                            <option value="fortune-teller">Fortune Teller</option>
+                            <option value="psychic">Psychic</option>
+                            <option value="alien">Alien Communication</option>
+                            <option value="time-traveler">Time Traveler Warning</option>
+                            <option value="parallel-universe">Parallel Universe Me</option>
+                            <option value="ghost">Ghost</option>
+                            <option value="spirit-guide">Spirit Guide</option>
+                            <option value="guardian-angel">Guardian Angel</option>
+                            <option value="demon">Demon</option>
+                            <option value="deity">Deity</option>
+                            <option value="ancient-prophecy">Ancient Prophecy</option>
+                            <option value="hieroglyphics">Hieroglyphics</option>
+                            <option value="cave-painting">Cave Painting</option>
+                            <option value="crop-circle">Crop Circle</option>
+                            <option value="ufo">UFO Message</option>
+                            <option value="telepathy">Telepathy</option>
+                            <option value="morse-code-blinks">Someone Blinking in Morse Code</option>
+                            <option value="license-plate">License Plate</option>
+                            <option value="cloud-formation">Cloud Formation</option>
+                            <option value="constellation">Constellation Pattern</option>
+                            <option value="bird-formation">Bird Formation</option>
+                            <option value="leaf-pattern">Leaf Pattern</option>
+                            <option value="coffee-stain">Coffee Stain</option>
+                            <option value="toast-burn">Burn Pattern on Toast</option>
+                            <option value="crack">Crack in the Sidewalk</option>
+                            <option value="water-stain">Water Stain on Ceiling</option>
+                            <option value="reflection">Reflection in a Window</option>
+                            <option value="shadow">Shadow on the Wall</option>
+                            <option value="mold">Mold Pattern</option>
+                            <option value="rust">Rust Formation</option>
+                            <option value="moss">Moss Growth</option>
+                            <option value="spiderweb">Spiderweb Pattern</option>
+                            <option value="snowflake">Snowflake Design</option>
+                            <option value="frostbite">Frostbite Pattern on Window</option>
+                            <option value="lightning">Lightning Strike Pattern</option>
+                            <option value="rainbow">Rainbow</option>
+                            <option value="aurora">Aurora Borealis</option>
+                            <option value="meteor">Meteor Shower Message</option>
+                            <option value="eclipse">Solar Eclipse Sign</option>
+                            <option value="tide">Tide Pattern</option>
+                            <option value="waves">Wave Formation</option>
+                            <option value="wind">Wind Direction</option>
+                            <option value="earthquake">Earthquake Tremor Pattern</option>
+                            <option value="volcano">Volcanic Ash Pattern</option>
+                            <option value="tornado">Tornado Path</option>
+                            <option value="hurricane">Hurricane Eye</option>
+                            <option value="avalanche">Avalanche Trail</option>
+                            <option value="landslide">Landslide Pattern</option>
+                            <option value="sinkhole">Sinkhole Formation</option>
+                            <option value="geyser">Geyser Eruption</option>
+                            <option value="sandstorm">Sandstorm Message</option>
+                            <option value="tumbleweed">Tumbleweed Path</option>
+                            <option value="other">Other (Not Listed)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purchaseReason">Why are you purchasing today? (Minimum 500 characters) *</label>
+                        <textarea id="purchaseReason" name="purchaseReason" rows="8" required minlength="500" placeholder="Please provide a detailed explanation of your purchasing motivation, including but not limited to: emotional state, financial situation, astrological alignment, and what you had for breakfast..."></textarea>
+                        <p class="char-counter">Characters: <span id="charCount">0</span> / 500</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="favoriteColor">What is your favorite color? *</label>
+                        <select id="favoriteColor" name="favoriteColor" required>
+                            <option value="">Select your favorite color...</option>
+                            <option value="red">Red</option>
+                            <option value="crimson">Crimson</option>
+                            <option value="scarlet">Scarlet</option>
+                            <option value="vermillion">Vermillion</option>
+                            <option value="maroon">Maroon</option>
+                            <option value="burgundy">Burgundy</option>
+                            <option value="coral">Coral</option>
+                            <option value="salmon">Salmon</option>
+                            <option value="orange">Orange</option>
+                            <option value="tangerine">Tangerine</option>
+                            <option value="apricot">Apricot</option>
+                            <option value="peach">Peach</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="gold">Gold</option>
+                            <option value="lemon">Lemon</option>
+                            <option value="canary">Canary</option>
+                            <option value="chartreuse">Chartreuse</option>
+                            <option value="lime">Lime</option>
+                            <option value="green">Green</option>
+                            <option value="emerald">Emerald</option>
+                            <option value="jade">Jade</option>
+                            <option value="mint">Mint</option>
+                            <option value="olive">Olive</option>
+                            <option value="forest">Forest Green</option>
+                            <option value="teal">Teal</option>
+                            <option value="cyan">Cyan</option>
+                            <option value="aqua">Aqua</option>
+                            <option value="turquoise">Turquoise</option>
+                            <option value="blue">Blue</option>
+                            <option value="navy">Navy</option>
+                            <option value="cobalt">Cobalt</option>
+                            <option value="sapphire">Sapphire</option>
+                            <option value="azure">Azure</option>
+                            <option value="cerulean">Cerulean</option>
+                            <option value="indigo">Indigo</option>
+                            <option value="purple">Purple</option>
+                            <option value="violet">Violet</option>
+                            <option value="lavender">Lavender</option>
+                            <option value="mauve">Mauve</option>
+                            <option value="plum">Plum</option>
+                            <option value="magenta">Magenta</option>
+                            <option value="fuchsia">Fuchsia</option>
+                            <option value="pink">Pink</option>
+                            <option value="rose">Rose</option>
+                            <option value="hot-pink">Hot Pink</option>
+                            <option value="brown">Brown</option>
+                            <option value="tan">Tan</option>
+                            <option value="beige">Beige</option>
+                            <option value="khaki">Khaki</option>
+                            <option value="taupe">Taupe</option>
+                            <option value="black">Black</option>
+                            <option value="gray">Gray</option>
+                            <option value="silver">Silver</option>
+                            <option value="white">White</option>
+                            <option value="ivory">Ivory</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experienceRating">Rate your shopping experience so far (1-10): *</label>
+                        <input type="range" id="experienceRating" name="experienceRating" min="1" max="10" value="10" required>
+                        <p class="rating-display">Rating: <span id="ratingValue">10</span>/10</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Would you recommend us to a friend? *</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="recommend" value="yes" required>
+                                Yes, absolutely!
+                            </label>
+                            <label>
+                                <input type="radio" name="recommend" value="yes-definitely" required>
+                                Yes, definitely!
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select ALL that apply to you: *</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="applies[]" value="human">
+                                I am a human
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="not-robot">
+                                I am not a robot
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="robot">
+                                I am a robot
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="enjoy-shopping">
+                                I enjoy shopping here
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="hate-shopping">
+                                I hate shopping here
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="first-time">
+                                This is my first time shopping here
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="regular">
+                                I am a regular customer
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="never-return">
+                                I will never return
+                            </label>
+                            <label>
+                                <input type="checkbox" name="applies[]" value="will-return">
+                                I will definitely return
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="button">Complete Purchase</button>
+            </form>
+
+            <div id="confirmationMessage"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silly Samuel's Silly Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Norbit Popup Modal -->
+    <div id="norbitModal" class="norbit-modal">
+        <div class="norbit-content">
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/60/Norbit_%282007_film%29_poster.jpg" alt="Norbit">
+            <h2>🎬 SPECIAL RECOMMENDATION! 🎬</h2>
+            <p class="norbit-description-1">
+                We noticed you're checking out! Have you considered adding <strong>NORBIT</strong> to your order?
+            </p>
+            <p class="norbit-description-2">
+                This cinematic masterpiece featuring Eddie Murphy in THREE roles is a must-have for any collection!
+            </p>
+            <p class="norbit-price">
+                Only $299.99!
+            </p>
+            <button onclick="addNorbitToCart()" class="button btn-norbit-yes">YES! Add Norbit!</button>
+            <button onclick="showAreYouSureModal()" class="button btn-norbit-no">No thanks</button>
+        </div>
+    </div>
+
+    <!-- Are You Sure Modal -->
+    <div id="areYouSureModal" class="are-you-sure-modal">
+        <div class="are-you-sure-content">
+            <h2>⚠️ ARE YOU SURE?! ⚠️</h2>
+            <p class="are-you-sure-description-1">
+                You're about to miss out on the GREATEST film of all time!
+            </p>
+            <p class="are-you-sure-description-2">
+                Norbit has a 9% on Rotten Tomatoes! That means 9% of critics were brave enough to recognize genius!
+            </p>
+            <button onclick="addNorbitToCart()" class="button btn-add-norbit-sure">Actually, add Norbit!</button>
+            <button onclick="closeAllModals()" class="button btn-decline-sure">I hate fun</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+/* Checkout Page Specific Styles */
+
+/* Navigation - Tiny Top Right Corner */
+nav {
+    position: fixed !important;
+    top: 5px !important;
+    right: 5px !important;
+    width: auto !important;
+    padding: 3px !important;
+    background-color: rgba(240, 240, 240, 0.7) !important;
+    border: 1px solid #ddd !important;
+    z-index: 1000 !important;
+}
+
+nav ul {
+    flex-direction: row !important;
+    gap: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+nav li {
+    font-size: 8pt !important;
+}
+
+nav a {
+    color: #ccc !important;
+    font-size: 8pt !important;
+    padding: 2px 4px !important;
+    text-decoration: none !important;
+}
+
+nav a:hover {
+    color: #999 !important;
+}
+
+/* Tip Input */
+#tip {
+    background-color: #ddd;
+}
+
+/* Norbit Modal */
+.norbit-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.norbit-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 5px solid #ff00ff;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.norbit-content img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.norbit-content h2 {
+    color: red;
+    font-size: 28pt;
+}
+
+.norbit-description-1 {
+    font-size: 18pt;
+    color: darkgreen;
+    margin: 20px 0;
+}
+
+.norbit-description-2 {
+    font-size: 14pt;
+    color: purple;
+}
+
+.norbit-price {
+    font-size: 20pt;
+    color: orange;
+    font-weight: bold;
+}
+
+.btn-norbit-yes {
+    font-size: 18pt !important;
+    padding: 15px 30px !important;
+    margin: 10px !important;
+}
+
+.btn-norbit-no {
+    font-size: 18pt !important;
+    padding: 15px 30px !important;
+    margin: 10px !important;
+    background-color: gray !important;
+}
+
+/* Are You Sure Modal */
+.are-you-sure-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.9);
+}
+
+.are-you-sure-content {
+    background-color: yellow;
+    padding: 30px;
+    border: 10px solid red;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.are-you-sure-content h2 {
+    color: red;
+    font-size: 32pt;
+    text-decoration: underline;
+}
+
+.are-you-sure-description-1 {
+    font-size: 20pt;
+    color: black;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.are-you-sure-description-2 {
+    font-size: 16pt;
+    color: darkred;
+}
+
+.btn-add-norbit-sure {
+    font-size: 18pt !important;
+    padding: 15px 30px !important;
+    margin: 10px !important;
+    background-color: lime !important;
+    color: black !important;
+}
+
+.btn-decline-sure {
+    font-size: 14pt !important;
+    padding: 10px 20px !important;
+    margin: 10px !important;
+    background-color: darkgray !important;
+}
+
+/* Survey Section Styles */
+.survey-section {
+    background: linear-gradient(135deg, #ff69b4, #ffd700, #00ffff, #ff1493);
+    border: 8px solid red;
+    padding: 30px;
+    margin: 40px 0;
+    animation: survey-pulse 2s infinite;
+}
+
+@keyframes survey-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.survey-section h3 {
+    color: red;
+    font-size: 28pt;
+    text-align: center;
+    text-shadow: 3px 3px yellow;
+}
+
+.survey-notice {
+    text-align: center;
+    color: darkred;
+    font-weight: bold;
+    font-size: 16pt;
+    margin-bottom: 20px;
+    background-color: yellow;
+    padding: 10px;
+    border: 3px dashed red;
+}
+
+/* Survey Progress Bar */
+.survey-progress {
+    background-color: white;
+    padding: 15px;
+    margin: 20px 0;
+    border: 3px solid purple;
+    text-align: center;
+}
+
+.survey-progress p {
+    font-size: 18pt;
+    font-weight: bold;
+    color: purple;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: lightgray;
+    border: 2px solid black;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, red, orange, yellow, green);
+    width: 0%;
+    transition: width 0.5s;
+}
+
+/* Survey Form Elements */
+.survey-section .form-group {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    margin: 20px 0;
+    border: 3px solid orange;
+    border-radius: 10px;
+}
+
+.survey-section label {
+    color: darkblue;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.survey-section select,
+.survey-section textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14pt;
+    font-family: 'Comic Sans MS', 'Henny Penny', cursive;
+    border: 3px solid magenta;
+    background-color: lightyellow;
+    color: darkgreen;
+}
+
+.survey-section textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.char-counter {
+    font-size: 14pt;
+    color: purple;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Range slider */
+.survey-section input[type="range"] {
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(90deg, red, yellow, green);
+    cursor: pointer;
+}
+
+.rating-display {
+    font-size: 18pt;
+    color: orange;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Radio and Checkbox Groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14pt;
+    color: darkred;
+    cursor: pointer;
+    padding: 10px;
+    background-color: lightcyan;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+    background-color: lightgreen;
+    transform: scale(1.05);
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Make the survey visually annoying */
+.survey-section .form-group:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.survey-section .form-group:nth-child(even) {
+    transform: rotate(1deg);
+}

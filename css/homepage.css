@@ -1,0 +1,476 @@
+/* Homepage Specific Styles */
+
+/* Navigation - Hidden completely, links are in quick actions instead */
+nav {
+    display: none !important;
+}
+
+/* Banner Carousel */
+#bannerCarousel {
+    background: linear-gradient(45deg, red, yellow, lime, cyan, magenta);
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-slide {
+    display: none;
+}
+
+.banner-slide h2 {
+    text-align: center;
+}
+
+.banner-slide-1 h2 {
+    font-size: 36pt;
+    color: white;
+    text-shadow: 3px 3px red;
+}
+
+.banner-slide-1 p {
+    text-align: center;
+    font-size: 20pt;
+    color: yellow;
+}
+
+.banner-slide-2 h2 {
+    font-size: 32pt;
+    color: lime;
+}
+
+.banner-slide-3 h2 {
+    font-size: 28pt;
+    color: magenta;
+}
+
+.banner-slide-4 h2 {
+    font-size: 30pt;
+    color: orange;
+}
+
+.banner-slide-5 h2 {
+    font-size: 34pt;
+    color: cyan;
+}
+
+/* Marquee Styles */
+.marquee-news {
+    background-color: yellow;
+    padding: 10px;
+    font-size: 18pt;
+    color: red;
+    font-weight: bold;
+}
+
+.marquee-winner {
+    background-color: cyan;
+    padding: 10px;
+    font-size: 16pt;
+    color: blue;
+    font-weight: bold;
+}
+
+.marquee-norbit {
+    background-color: magenta;
+    padding: 10px;
+    font-size: 20pt;
+    color: white;
+    font-weight: bold;
+}
+
+/* Live Stats Section */
+.live-stats {
+    background-color: lightyellow;
+    border: 3px dashed red;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.live-stats-viewing {
+    font-size: 20pt;
+    color: red;
+    font-weight: bold;
+}
+
+.live-stats-visitors {
+    font-size: 16pt;
+    color: purple;
+}
+
+/* GIF Containers */
+.gif-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.gif-container img {
+    width: 150px;
+    height: auto;
+}
+
+/* Trust Badges Section */
+.trust-badges-section {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border: 5px solid gold;
+}
+
+.trust-badges-section h3 {
+    color: orange;
+    font-size: 24pt;
+}
+
+.trust-badges-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.trust-badge {
+    padding: 10px;
+}
+
+.trust-badge-1 {
+    border: 2px solid blue;
+    background-color: lightblue;
+}
+
+.trust-badge-2 {
+    border: 2px solid green;
+    background-color: lightgreen;
+}
+
+.trust-badge-3 {
+    border: 2px solid orange;
+    background-color: lightyellow;
+}
+
+.trust-badge-4 {
+    border: 2px solid red;
+    background-color: lightcoral;
+}
+
+.trust-badge-5 {
+    border: 2px solid purple;
+    background-color: lavender;
+}
+
+/* Video Section */
+.video-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.video-section h3 {
+    color: red;
+    font-size: 22pt;
+}
+
+/* Button Grid Section */
+.quick-actions-section {
+    margin: 30px 0;
+    background-color: lightgray;
+    padding: 20px;
+    border: 5px solid black;
+}
+
+.quick-actions-section h2 {
+    text-align: center;
+    color: red;
+    font-size: 28pt;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Cookie Consent Banner */
+#cookieConsent {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(45deg, orange, yellow);
+    padding: 20px;
+    z-index: 9999;
+    border-top: 5px solid red;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content h3 {
+    color: red;
+    font-size: 24pt;
+    margin-bottom: 10px;
+}
+
+.cookie-content p {
+    font-size: 14pt;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-accept-cookies {
+    background-color: lime !important;
+    color: black !important;
+    padding: 15px 30px !important;
+    border: 3px solid green !important;
+    font-size: 16pt !important;
+    cursor: pointer;
+    font-weight: bold !important;
+    font-family: 'Comic Sans MS' !important;
+}
+
+.btn-cookie-settings {
+    background-color: gray !important;
+    color: white !important;
+    padding: 15px 30px !important;
+    border: 3px solid black !important;
+    font-size: 12pt !important;
+    cursor: pointer;
+    font-family: 'Comic Sans MS' !important;
+}
+
+/* Newsletter Modal */
+.newsletter-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,0,255,0.8);
+}
+
+.newsletter-content {
+    background: linear-gradient(135deg, pink, lightblue, lightyellow);
+    padding: 30px;
+    border: 10px solid magenta;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255,0,255,0.9);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.newsletter-content h2 {
+    color: red;
+    font-size: 32pt;
+    margin-bottom: 20px;
+}
+
+.newsletter-content p {
+    font-size: 18pt;
+    color: purple;
+    margin-bottom: 20px;
+}
+
+.newsletter-input {
+    width: 80%;
+    padding: 15px;
+    font-size: 16pt;
+    border: 3px solid purple;
+    margin-bottom: 20px;
+    font-family: 'Comic Sans MS';
+}
+
+.btn-newsletter-submit {
+    background-color: orange;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    font-size: 18pt;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Comic Sans MS';
+    font-weight: bold;
+}
+
+.btn-newsletter-later {
+    background-color: gray;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14pt;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Comic Sans MS';
+}
+
+/* Shake animation that preserves centering */
+@keyframes shake-centered {
+    0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-50%, -50%) translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translate(-50%, -50%) translateX(10px); }
+}
+
+/* Limited Time Deal Modal */
+.deal-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,0,0,0.9);
+}
+
+.deal-content {
+    background-color: yellow;
+    padding: 30px;
+    border: 15px solid red;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    animation: shake-centered 0.5s infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.deal-content h2 {
+    color: red;
+    font-size: 36pt;
+    margin-bottom: 20px;
+}
+
+.deal-countdown-text {
+    font-size: 28pt;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.deal-countdown-time {
+    color: red;
+}
+
+.deal-description {
+    font-size: 20pt;
+    color: purple;
+    margin-bottom: 20px;
+}
+
+.deal-disclaimer {
+    font-size: 10pt;
+    color: gray;
+}
+
+.btn-deal-shop {
+    background-color: lime;
+    color: black;
+    padding: 20px 50px;
+    border: 5px solid green;
+    font-size: 22pt;
+    cursor: pointer;
+    margin: 10px;
+    font-family: 'Comic Sans MS';
+    font-weight: bold;
+}
+
+.btn-deal-close {
+    background-color: darkgray;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 12pt;
+    cursor: pointer;
+    margin: 10px;
+    font-family: 'Comic Sans MS';
+}
+
+/* Chatbot Widget */
+#chatbotWidget {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: linear-gradient(45deg, cyan, magenta);
+    border: 5px solid greenyellow;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 10002;
+    box-shadow: 0 0 30px rgba(255,0,255,0.8);
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chatbot-header h3 {
+    color: white;
+    font-size: 18pt;
+    margin: 0;
+}
+
+.btn-chatbot-close {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.chatbot-message {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 12pt;
+}
+
+.chatbot-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid purple;
+    font-family: 'Comic Sans MS';
+}
+
+.btn-chatbot-send {
+    width: 100%;
+    background-color: lime;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Comic Sans MS';
+}

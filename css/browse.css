@@ -1,0 +1,133 @@
+/* Browse Page Specific Styles */
+
+/* Body padding to account for fixed nav */
+body {
+    padding-left: 70px !important;
+}
+
+/* Navigation - Vertical Left Side with Rotated Text */
+nav {
+    position: fixed !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 60px !important;
+    padding: 20px 5px !important;
+    background: linear-gradient(180deg, orange, red, purple) !important;
+    border: none !important;
+    border-right: 5px solid yellow !important;
+    z-index: 1000 !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+}
+
+nav ul {
+    flex-direction: row !important;
+    gap: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+nav li {
+    transform: rotate(180deg) !important;
+    animation: nav-spin 3s linear infinite !important;
+}
+
+nav a {
+    font-size: 14pt !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: upright !important;
+    color: yellow !important;
+    text-shadow: 2px 2px black !important;
+}
+
+nav a:hover {
+    color: lime !important;
+}
+
+@keyframes nav-spin {
+    0%, 100% { transform: rotate(180deg); }
+    25% { transform: rotate(185deg); }
+    50% { transform: rotate(175deg); }
+    75% { transform: rotate(185deg); }
+}
+
+/* Norbit Search Suggestion */
+.norbit-suggestion {
+    background: linear-gradient(135deg, #ff1493, #ff69b4, #ffd700);
+    border: 8px solid red;
+    padding: 40px;
+    margin: 30px 0;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+    animation: suggestion-pulse 1.5s infinite;
+}
+
+@keyframes suggestion-pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+    }
+    50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 0 60px rgba(255, 0, 0, 1);
+    }
+}
+
+.norbit-suggestion h3 {
+    color: darkred;
+    font-size: 28pt;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px yellow;
+}
+
+.norbit-suggestion .search-term {
+    color: red;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.suggestion-text {
+    font-size: 32pt;
+    color: blue;
+    font-weight: bold;
+    margin: 20px 0;
+    animation: suggestion-blink 1s infinite;
+}
+
+@keyframes suggestion-blink {
+    0%, 49%, 100% { opacity: 1; }
+    50%, 99% { opacity: 0.5; }
+}
+
+.norbit-link {
+    color: lime;
+    font-size: 36pt;
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: 3px 3px black;
+    cursor: pointer;
+    animation: norbit-wiggle 0.5s infinite;
+}
+
+@keyframes norbit-wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+.norbit-link:hover {
+    color: yellow;
+    text-shadow: 3px 3px red, 0 0 20px yellow;
+    transform: scale(1.2);
+}
+
+.suggestion-subtext {
+    font-size: 18pt;
+    color: purple;
+    font-style: italic;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+}

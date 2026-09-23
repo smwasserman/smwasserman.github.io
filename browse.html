@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Products - Silly Samuel's Silly Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/browse.css">
+    <script src="js/browse.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Silly Samuel's Silly Store</h1>
+        <p>Browse our amazing products!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Browse Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="browse">
+            <h2>Our Products</h2>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button onclick="searchProducts()" class="button">Search</button>
+            </div>
+
+            <div id="products" class="product-grid">
+              <div class="product" data-name="Stuart Little (Fullscreen) DVD" data-category="dvd">
+                    <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on DVD (Fullscreen)</h3>
+                    <p class="stock">In Stock: 12</p>
+                    <p>Price: $9.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little (Fullscreen) DVD', 9.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="AI Deluxe Airfryer Pro" data-category="airfryer">
+                    <img src="https://web-res.midea.com/content/dam/comfee-aem/global/products/small-appliances/electric-air-fryer-oilless-cooker/kv1.png/jcr:content/renditions/cq5dam.compression.png" class="product-img">
+                    <h3>AI Deluxe Airfryer Pro</h3>
+                    <p class="stock">In Stock: 7</p>
+                    <p>Price: $599.99</p>
+                    <p>Smart cooking with AI technology!</p>
+                    <button onclick="addToCart('AI Deluxe Airfryer Pro', 299.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Norbit" data-category="dvd">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/6/60/Norbit_%282007_film%29_poster.jpg" alt="norbit" class="product-img">
+                    <h3>Norbit</h3>
+                    <p class="stock">In Stock: 7</p>
+                    <p>Price: $299.99</p>
+                    <p>
+                      This right here is likely one of the GREATEST movies ever made.
+                      The protagonist, mild-mannered Norbit (Eddie Murphy) has always had it rough,
+                      since the day he was left abandoned at a combination Chinese restaurant and
+                      orphanage to be raised by the owner, Mr. Wong (Eddie Murphy).
+                      He is pressured to marry the lovely Rasputia (Eddie Murphy), and find himself tangled up in a big conspiracy led by Rasputia's older brother (Terry Crews).
+                      Buy this movie if you want to have lots of laughs and a GREAT time!!!!!!!
+                    </p>
+                    <button onclick="addToCart('Norbit', 299.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="AIr Fryer Mini XL Deluxe 3000" data-category="airfryer">
+                  <img src="https://web-res.midea.com/content/dam/comfee-aem/global/products/small-appliances/electric-air-fryer-oilless-cooker/kv1.png/jcr:content/renditions/cq5dam.compression.png" class="product-img">
+                    <h3>AIr Fryer Mini XL Deluxe 3000</h3>
+                    <p class="stock">In Stock: 23</p>
+                    <p>Price: $249.99</p>
+                    <p>Voice-controlled airfrying magic!</p>
+                    <button onclick="addToCart('AIr Fryer Mini XL Deluxe 3000', 249.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Stuart Little VHS" data-category="vhs">
+                  <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on VHS</h3>
+                    <p class="stock">In Stock: 3</p>
+                    <p>Price: $4.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little VHS', 4.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="The Substance DVD" data-category="dvd">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/The_Substance_poster.jpg" alt="The Substance DVD" class="product-img">
+                    <h3>The Substance DVD</h3>
+                    <p class="stock">In Stock: 5</p>
+                    <p>Price: $12.99</p>
+                    <p>
+                      I regret watching this film.
+                      The cinematography is excellent and the film is very
+                      well done but good lord was this disturbing.
+                    </p>
+                    <button onclick="addToCart('The Substance DVD', 12.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Stuart Little Betamax" data-category="betamax">
+                  <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on Betamax</h3>
+                    <p class="stock">In Stock: 1</p>
+                    <p>Price: $89.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little Betamax', 89.99)" class="button">Add to Cart</button>
+                </div>
+                <div class="product" data-name="Minions: The Rise of Gru" data-category="dvd">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/45/Minions_The_Rise_of_Gru_poster.jpg" alt="haha blind people" class="product-img">
+                    <h3>Minions: The Rise of Gru</h3>
+                    <p class="stock">In Stock: 500</p>
+                    <p>Price: $36.99</p>
+                    <p>
+                      BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA
+                      BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA
+                      BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA BANANA
+                    </p>
+                    <button onclick="addToCart('Minions: The Rise of Gru', 14.99)" class="button">Add to Cart</button>
+                </div>
+                <div class="product" data-name="Stuart Little Blu-ray" data-category="bluray">
+                  <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on Blu-ray</h3>
+                    <p class="stock">In Stock: 0</p>
+                    <p>Price: $19.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little Blu-ray', 19.99)" class="button">Add to Cart</button>
+                </div>
+                <div class="product" data-name="Buffalo 66" data-category="dvd">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Buffalo_sixty_six_ver1.jpg" alt="Buffalo 66 DVD" class="product-img">
+                    <h3>Buffalo 66 DVD</h3>
+                    <p class="stock">In Stock: 66</p>
+                    <p>Price: $66.67</p>
+                    <p>
+                      This cult classic is an indie film written and directed by Vicent Gallo. Vincent Gallo cast himself in the lead role and Christina Ricci is the main supporting actress.
+                      There are countless problematic things about this movie from the main story and message of the film to all of the issues on set.
+                      Gallo reportedly never broke character while on set (which is a big problem if you've seen the film) and Christina Ricci vowed to never work with Gallo again after filming .
+                    </p>
+                    <button onclick="addToCart('Buffalo 66', 66.67)" class="button">Add to Cart</button>
+                </div>
+                <div class="product" data-name="Stuart Little LaserDisc" data-category="laserdisc">
+                  <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on LaserDisc</h3>
+                    <p class="stock">In Stock: ???</p>
+                    <p>Price: $149.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little LaserDisc', 149.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Stuart Little 2 DVD" data-category="dvd">
+                    <img src="https://m.media-amazon.com/images/I/91WsyhfMpFL._AC_UF1000,1000_QL80_.jpg" alt="Stuart Little 2 DVD" class="product-img">
+                    <h3>Stuart Little 2 DVD</h3>
+                    <p class="stock">In Stock: 8</p>
+                    <p>Price: $12.99</p>
+                    <p>
+                      I'll be honest I haven't seen this movie so I'm not sure what happens but it's a sequel to the first Stuart Little.
+                      Did you know the dad is played by the same actor who plays House MD?
+                    </p>
+                    <button onclick="addToCart('Stuart Little 2 DVD', 12.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Spy Kids 3-D: Game Over DVD" data-category="dvd">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Spy_Kids_3-D_movie_poster.jpg/250px-Spy_Kids_3-D_movie_poster.jpg" alt="Spy Kids 3-D: Game Over DVD" class="product-img">
+                    <h3>Spy Kids 3-D: Game Over DVD</h3>
+                    <p class="stock">In Stock: 3D</p>
+                    <p>Price: $24.99</p>
+                    <p>
+                      This movie feels like a fever dream that should have never been made. I highly reccomend it.
+                    </p>
+                    <button onclick="addToCart('Spy Kids 3-D: Game Over DVD', 14.99)" class="button">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Stuart Little (Widescreen) DVD" data-category="dvd">
+                    <img src="https://play-lh.googleusercontent.com/0eNVmYdrQy5LSmeW3l4ivPNb8MaWhpuaSFtx0WSwvC7TDQ_toNwNSCwAm_LX1O6GHCXG" alt="Stuart Little DVD" class="product-img">
+                    <h3>Stuart Little on DVD <br>(Widescreen)</h3>
+                    <p class="stock">In Stock: 12</p>
+                    <p>Price: $9.99</p>
+                    <p>
+                      This award winning classic is about a human couple that goes to an orphanage and instead of adopting a child they addopt a mouse.
+                      Their biological (human) son gets upset that they adopted a mouse since he wanted a brother, but the film acts like he's the crazy one.
+                      They also have a cat named Snowbell that constantly tries to eat Stuart because he's a mouse.
+                      The parents in this movie are terrible and neglect both stuart and their boy and should never have brought him into a home where there is a cat constantly trying to eat him. They really should have thought that through before adopting him.
+                    </p>
+                    <button onclick="addToCart('Stuart Little (Widescreen) DVD', 9.99)" class="button">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silly Samuel's Silly Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

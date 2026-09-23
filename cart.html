@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Silly Samuel's Silly Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <script src="js/cart.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="rainbow-fast">Silly Samuel's Silly Store</h1>
+        <p>Your Shopping Cart (Prices May Vary!)</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Browse Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Annoying scrolling banner -->
+    <marquee behavior="scroll" direction="left" scrollamount="12" class="cart-marquee-top">
+        🛒 CART EXPIRING IN 5 MINUTES! 🛒 Add more items now! 🛒 FREE SHIPPING on orders over $500! 🛒
+    </marquee>
+
+    <main>
+        <!-- Fake Ads Section -->
+        <div class="fake-ads-section">
+            <h2 class="blink">🎯 SPECIAL CART OFFERS! 🎯</h2>
+            <div class="ad-container">
+                <div class="ad-box ad-box-1">
+                    <img src="https://png.pngtree.com/png-vector/20241031/ourlarge/pngtree-premium-gold-stickers-design-png-image_14219743.png">
+                    <p>⭐ UPGRADE TO PREMIUM!</p>
+                    <button onclick="alert('Feature not available!')" class="chaos-button">Join Now!</button>
+                </div>
+                <div class="ad-box ad-box-2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-hmb6i-1gmwQPRDfY85Ik5VjSZszo-GfB0Q&s">
+                    <p>💰 DOWNLOAD OUR APP!</p>
+                    <button onclick="alert('App does not exist!')" class="chaos-button">Download!</button>
+                </div>
+            </div>
+        </div>
+
+        <section id="cart">
+            <h2 class="blink cart-heading">🛒 Your Shopping Cart 🛒</h2>
+
+            <div id="fakeError"></div>
+
+            <!-- Random GIFs for chaos -->
+            <div class="gif-row">
+                <img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif">
+                <img src="https://media.giphy.com/media/l2R06WPHU6qRcZTSo/giphy.gif">
+                <img src="https://media.giphy.com/media/67ThRZlYBvibtdF9JH/giphy.gif">
+            </div>
+
+            <div id="cartItems"></div>
+            <div id="cartTotal"></div>
+
+            <!-- Confusing Button Section -->
+            <div id="checkoutSection" class="checkout-buttons-section">
+                <h3 class="spinning">⚠️ CHOOSE WISELY! ⚠️</h3>
+                <p>One of these buttons will take you to checkout...</p>
+
+                <div class="checkout-button-grid">
+                    <button onclick="fakeCheckout()" class="button btn-orange">Checkout Now</button>
+                    <button onclick="fakeCheckout()" class="button btn-cyan">Continue to Payment</button>
+                    <button onclick="fakeCheckout()" class="button btn-magenta">Complete Order</button>
+                    <button onclick="attemptCheckout()" id="realCheckoutBtn" class="button btn-lime">Proceed to Checkout (Real)</button>
+                    <button onclick="fakeCheckout()" class="button btn-yellow">Finalize Purchase</button>
+                    <button onclick="fakeCheckout()" class="button btn-pink">Go to Checkout</button>
+                </div>
+
+                <div class="clear-cart-container">
+                    <button onclick="clearCart()" class="button btn-clear-cart">
+                        EMPTY CART (Don't Click!)
+                    </button>
+                </div>
+
+                <div class="checkout-link-container">
+                    <p>Or maybe the link below is the real checkout?</p>
+                    <a href="#" onclick="fakeCheckout(); return false;">Click here to checkout</a>
+                </div>
+            </div>
+
+            <!-- Fake Coupon Section -->
+            <div class="coupon-section">
+                <h3>💚 Have a Coupon Code?</h3>
+                <input type="text" id="couponCode" placeholder="Enter coupon code" class="coupon-input">
+                <button onclick="alert('❌ Invalid coupon code!')" class="button btn-coupon-apply">Apply</button>
+                <p>*Coupon codes never work, but we like to give you hope!</p>
+            </div>
+
+            <!-- Fake Shipping Calculator -->
+            <div class="shipping-section">
+                <h3>📦 Calculate Shipping</h3>
+                <select class="shipping-select">
+                    <option>Select Country</option>
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mars</option>
+                    <option>Atlantis</option>
+                </select>
+                <button onclick="alert('Shipping estimate: $' + (Math.random() * 100 + 20).toFixed(2))" class="button btn-shipping-calc">Calculate</button>
+            </div>
+        </section>
+
+        <marquee behavior="scroll" direction="right" scrollamount="10" class="cart-marquee-bottom">
+            ⚡ Don't forget to add Norbit to your cart! ⚡ Best purchase you'll ever make! ⚡
+        </marquee>
+
+        <!-- Countdown Timer Display -->
+        <div id="countdownDisplay" class="countdown-display">
+            <h2 class="blink">⏰ MANDATORY WAITING PERIOD ⏰</h2>
+            <p class="countdown-message">For security purposes, you must wait before proceeding to checkout.</p>
+            <div class="countdown-timer-box">
+                <p class="countdown-label">Time Remaining:</p>
+                <p class="countdown-time" id="countdownTime">00:30</p>
+            </div>
+            <p class="countdown-subtext">This helps us ensure you're making an informed decision! 😊</p>
+            <div class="countdown-progress-bar">
+                <div id="countdownProgressFill" class="countdown-progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- More random GIFs -->
+        <div class="gif-row gif-row-bottom">
+            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif">
+            <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silly Samuel's Silly Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Recommendations Popup Modal -->
+    <div id="recommendationsModal" class="recommendations-modal">
+        <div class="recommendations-content">
+            <h2>🎁 CUSTOMERS ALSO BOUGHT! 🎁</h2>
+            <p>Don't miss out on these amazing deals!</p>
+
+            <div class="recommendation-grid">
+                <div class="recommendation-item recommendation-item-1">
+                    <h3>Norbit Special Edition</h3>
+                    <p>$299.99</p>
+                    <button onclick="addRecommendation('Norbit Special Edition', 299.99)" class="button btn-rec-1">Add to Cart!</button>
+                </div>
+                <div class="recommendation-item recommendation-item-2">
+                    <h3>Stuart Little Complete Collection</h3>
+                    <p>$399.99</p>
+                    <button onclick="addRecommendation('Stuart Little Complete Collection', 399.99)" class="button btn-rec-2">Add to Cart!</button>
+                </div>
+                <div class="recommendation-item recommendation-item-3">
+                    <h3>Mystery Airfryer Bundle</h3>
+                    <p>$599.99</p>
+                    <button onclick="addRecommendation('Mystery Airfryer Bundle', 599.99)" class="button btn-rec-3">Add to Cart!</button>
+                </div>
+                <div class="recommendation-item recommendation-item-4">
+                    <h3>Lifetime Premium Membership</h3>
+                    <p>$999.99</p>
+                    <button onclick="addRecommendation('Lifetime Premium Membership', 999.99)" class="button btn-rec-4">Add to Cart!</button>
+                </div>
+            </div>
+
+            <button onclick="closeRecommendations()" class="btn-close-recommendations">Maybe Later (Will ask again)</button>
+        </div>
+    </div>
+
+    <!-- Last Chance Upsell Modal -->
+    <div id="lastChanceModal" class="last-chance-modal">
+        <div class="last-chance-content">
+            <h2 class="blink">⚠️ WAIT! LAST CHANCE! ⚠️</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/60/Norbit_%282007_film%29_poster.jpg">
+            <p class="last-chance-description-1">
+                Add the PREMIUM Norbit Collection before you go!
+            </p>
+            <p class="last-chance-price">Only $499.99!</p>
+            <p class="last-chance-description-2">DVD + Blu-ray + Digital + Behind the Scenes + Director's Cut + Signed Poster (not really)</p>
+            <div class="last-chance-buttons">
+                <button onclick="closeUpsellModal(true)" class="btn-add-norbit">YES! Add Norbit!</button>
+                <br>
+                <button onclick="closeUpsellModal(false)" class="btn-decline-norbit">No thanks, I hate happiness</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
