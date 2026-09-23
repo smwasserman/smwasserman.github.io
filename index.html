@@ -3,39 +3,160 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Samuel Wasserman's personal site, home of Silly Samuel's Silly Store, a deliberately terrible online store.">
+  <meta name="description" content="Samuel Wasserman's personal site: a late-90s desktop with a deliberately terrible online store, a game of 2048, and a pile of random facts.">
   <title>Samuel Wasserman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Silkscreen&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script src="js/2048.js" defer></script>
+  <script src="js/home.js" defer></script>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Samuel Wasserman</h1>
-      <p class="intro">I'm learning to build software by directing AI coding agents. This site is where I put what I make.</p>
-    </header>
+  <!-- Pixel icons, drawn once and reused by the desktop and taskbar -->
+  <svg class="sprites" aria-hidden="true">
+    <symbol id="i-doc" viewBox="0 0 16 16"><path fill="#fff" d="M3 1h7l3 3v11H3z"/><path fill="#1c1d22" d="M2 0h9v1H2zM2 1h1v15H2zM3 15h11v1H3zM13 4h1v11h-1zM10 1h1v3h3v1h-4zM11 1h1v1h-1zM12 2h1v1h-1zM5 6h6v1H5zM5 8h6v1H5zM5 10h6v1H5zM5 12h4v1H5z"/></symbol>
+    <symbol id="i-store" viewBox="0 0 16 16"><path fill="#f2b61b" d="M1 3h14v12H1z"/><path fill="#1c1d22" d="M0 2h16v1H0zM0 3h1v13H0zM15 3h1v13h-1zM1 15h14v1H1zM3 3h2l-4 4V5zM8 3h2l-9 9v-2zM13 3h2L3 15H1zM15 6v2l-7 7H6zM15 11v2l-2 2h-2z"/></symbol>
+    <symbol id="i-2048" viewBox="0 0 16 16"><path fill="#1c1d22" d="M0 0h16v16H0z"/><path fill="#f2b61b" d="M2 2h5v5H2z"/><path fill="#e0482a" d="M9 2h5v5H9z"/><path fill="#2fa37a" d="M2 9h5v5H2z"/><path fill="#2e55d9" d="M9 9h5v5H9z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16"><path fill="#2e55d9" d="M1 2h14v10H1z"/><path fill="#1c1d22" d="M0 1h16v1H0zM0 2h1v11H0zM15 2h1v11h-1zM0 12h16v1H0zM6 13h4v1H6zM4 14h8v2H4z"/><path fill="#fff" d="M7 4h2v2H7zM7 7h2v4H7z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 16 16"><path fill="#2fa37a" d="M5 1h6v1h2v2h1v2h1v4h-1v2h-1v2h-2v1H5v-1H3v-2H2v-2H1V6h1V4h1V2h2z"/><path fill="#1c1d22" d="M5 0h6v1H5zM3 1h2v1H3zM11 1h2v1h-2zM2 2h1v2H2zM13 2h1v2h-1zM1 4h1v2H1zM14 4h1v2h-1zM0 6h1v4H0zM15 6h1v4h-1zM1 10h1v2H1zM14 10h1v2h-1zM2 12h1v2H2zM13 12h1v2h-1zM3 14h2v1H3zM11 14h2v1h-2zM5 15h6v1H5zM7 1h2v14H7zM1 7h14v2H1z"/></symbol>
+  </svg>
 
-    <section class="exhibit" aria-labelledby="store-title">
-      <div class="exhibit-inner">
-        <h2 id="store-title">Silly Samuel's Silly Store</h2>
-        <p>An online store for AI air fryers and DVDs of Norbit, designed to be as hard to use as possible. It breaks twelve rules of good interface design on purpose: runaway login buttons, a "Remove" button that adds items, 99,451 zip codes in random order, and a checkout that charges you a mandatory tip.</p>
-        <p>You can still log in (username <kbd>name</kbd>, password <kbd>12345</kbd>), shop, and check out. It just fights you the whole way.</p>
-        <p class="warning"><strong>Warning:</strong> the store has flashing, spinning and shaking content. You'll be asked about animations before it loads, and you can switch them off from any page.</p>
-        <a class="enter" href="store/">Enter the store</a>
-      </div>
-    </section>
+  <div class="desktop">
+    <nav class="icons" aria-label="Desktop">
+      <button type="button" class="icon" data-open="win-about"><svg aria-hidden="true"><use href="#i-doc"/></svg><span>about_me.txt</span></button>
+      <button type="button" class="icon" data-open="win-store"><svg aria-hidden="true"><use href="#i-store"/></svg><span>silly_store.exe</span></button>
+      <button type="button" class="icon" data-open="win-2048"><svg aria-hidden="true"><use href="#i-2048"/></svg><span>2048.exe</span><b class="new">New!</b></button>
+      <button type="button" class="icon" data-open="win-facts"><svg aria-hidden="true"><use href="#i-doc"/></svg><span>did_you_know.txt</span></button>
+      <button type="button" class="icon" data-open="win-system"><svg aria-hidden="true"><use href="#i-info"/></svg><span>system_info.txt</span></button>
+      <button type="button" class="icon" data-open="win-links"><svg aria-hidden="true"><use href="#i-globe"/></svg><span>links.htm</span></button>
+    </nav>
 
-    <section aria-labelledby="explain-title">
-      <h2 id="explain-title">What it gets wrong, and why</h2>
-      <p>Every store page has an <em>Explain the bad UX</em> switch in the bottom-left corner. Turn it on to see each broken rule marked on the page, with a note on what it breaks and how.</p>
-    </section>
+    <main class="windows">
+      <section class="window win-about" id="win-about" tabindex="-1" aria-labelledby="t-about">
+        <header class="titlebar">
+          <span class="title" id="t-about">about_me.txt</span>
+          <button type="button" class="close" aria-label="Close about_me.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h1>Samuel Wasserman</h1>
+          <p class="intro">I'm learning to build software by directing AI coding agents. This site is where I put what I make.</p>
+          <p>It's built like a computer from 1998 because that's when the web was at its most personal: everyone had a homepage, and every homepage was a little strange. Drag the windows around, close them, reopen them from the desktop.</p>
+          <div class="counter">
+            <span>Your visits to this page</span>
+            <output id="visits">000001</output>
+          </div>
+        </div>
+      </section>
 
-    <section aria-labelledby="elsewhere-title">
-      <h2 id="elsewhere-title">Elsewhere</h2>
-      <p>The code for this site is on <a href="https://github.com/smwasserman/smwasserman.github.io">GitHub</a>.</p>
-    </section>
-  </main>
+      <section class="window win-facts" id="win-facts" tabindex="-1" aria-labelledby="t-facts">
+        <header class="titlebar">
+          <span class="title" id="t-facts">did_you_know.txt</span>
+          <button type="button" class="close" aria-label="Close did_you_know.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Did you know?</h2>
+          <p class="fact" id="fact" aria-live="polite">The first website, info.cern.ch, went online in 1991. CERN restored it in 2013, and you can still visit it.</p>
+          <div class="fact-footer">
+            <span id="factCount"></span>
+            <button type="button" class="btn" id="nextFact">Another fact</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="window win-store" id="win-store" tabindex="-1" aria-labelledby="t-store">
+        <header class="titlebar">
+          <span class="title" id="t-store">silly_store.exe</span>
+          <button type="button" class="close" aria-label="Close silly_store.exe">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Silly Samuel's Silly Store</h2>
+          <p>An online store for AI air fryers and DVDs of Norbit, designed to be as hard to use as possible. It breaks twelve rules of good interface design on purpose: runaway login buttons, a "Remove" button that adds items, 99,451 zip codes in random order, and a checkout that charges you a mandatory tip.</p>
+          <p>You can still log in (username <kbd>name</kbd>, password <kbd>12345</kbd>), shop, and check out. It just fights you the whole way. Every store page has an <em>Explain the bad UX</em> switch in the bottom-left corner that marks each broken rule and says what it breaks.</p>
+          <p class="warning"><strong>Warning:</strong> the store has flashing, spinning and shaking content. You'll be asked about animations before it loads, and you can switch them off from any page.</p>
+          <a class="btn btn-big" href="store/">Enter the store</a>
+        </div>
+      </section>
+
+      <section class="window win-2048" id="win-2048" tabindex="-1" aria-labelledby="t-2048">
+        <header class="titlebar">
+          <span class="title" id="t-2048">2048.exe</span>
+          <button type="button" class="close" aria-label="Close 2048.exe">&times;</button>
+        </header>
+        <div class="window-body" id="game2048">
+          <div class="scores">
+            <p>Score <output class="score">0</output></p>
+            <p>Best <output class="best">0</output></p>
+            <button type="button" class="btn new-game">New game</button>
+          </div>
+          <div class="board" tabindex="0" aria-label="2048 board. Click here, then use the arrow keys or W, A, S, D to slide the tiles." aria-describedby="gameHelp"></div>
+          <p class="game-status" aria-live="polite"></p>
+          <div class="dpad" aria-label="Slide tiles">
+            <button type="button" class="btn" data-dir="up" aria-label="Slide up">&uarr;</button>
+            <button type="button" class="btn" data-dir="left" aria-label="Slide left">&larr;</button>
+            <button type="button" class="btn" data-dir="down" aria-label="Slide down">&darr;</button>
+            <button type="button" class="btn" data-dir="right" aria-label="Slide right">&rarr;</button>
+          </div>
+          <p class="help" id="gameHelp">Slide the tiles with the arrow keys, W A S D, a swipe, or the buttons. Equal tiles merge. Make a 2048 tile to win.</p>
+        </div>
+      </section>
+
+      <section class="window win-system" id="win-system" tabindex="-1" aria-labelledby="t-system">
+        <header class="titlebar">
+          <span class="title" id="t-system">system_info.txt</span>
+          <button type="button" class="close" aria-label="Close system_info.txt">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>About this site</h2>
+          <table>
+            <tr><th scope="row">Pages</th><td>7: this one, a 404 page, and 5 store pages</td></tr>
+            <tr><th scope="row">Frameworks</th><td>0. Plain HTML, CSS and JavaScript</td></tr>
+            <tr><th scope="row">Hosted on</th><td>GitHub Pages</td></tr>
+            <tr><th scope="row">Built with</th><td>Claude Code, directed by me</td></tr>
+            <tr><th scope="row">Buttons on the store's front page</th><td>34, and 4 of them work</td></tr>
+            <tr><th scope="row">Login buttons</th><td>17, and 1 of them is real</td></tr>
+            <tr><th scope="row">Zip codes at checkout</th><td>99,451, shuffled</td></tr>
+            <tr><th scope="row">Ways to hear about the store</th><td>101, including "Burn Pattern on Toast"</td></tr>
+            <tr><th scope="row">Formats of Stuart Little for sale</th><td>6, including Betamax and LaserDisc</td></tr>
+            <tr><th scope="row">Bad UX notes in explain mode</th><td>47</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="window win-links" id="win-links" tabindex="-1" aria-labelledby="t-links">
+        <header class="titlebar">
+          <span class="title" id="t-links">links.htm</span>
+          <button type="button" class="close" aria-label="Close links.htm">&times;</button>
+        </header>
+        <div class="window-body">
+          <h2>Links</h2>
+          <ul class="links">
+            <li><a href="https://irisbahar.github.io/IrisBaharWebsite/">Dr. Iris Bahar's website</a>, which I helped make</li>
+            <li>My other website, <a href="https://lesbianflixxx.vip">lesbianflixxx.vip</a></li>
+            <li>The code for this site, on <a href="https://github.com/smwasserman/smwasserman.github.io">GitHub</a></li>
+          </ul>
+          <div class="badges" aria-label="Badges">
+            <span class="badge badge-browser">Best viewed with any browser</span>
+            <span class="badge badge-pages">Hosted on GitHub Pages</span>
+            <span class="badge badge-claude">Built with Claude Code</span>
+            <span class="badge badge-construction">Under construction</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="taskbar">
+    <button type="button" class="start" aria-expanded="false" aria-controls="startMenu">Start</button>
+    <div class="start-menu" id="startMenu" hidden>
+      <a href="store/">Enter the Silly Store</a>
+      <button type="button" data-open="win-2048">Play 2048</button>
+      <button type="button" data-open="win-facts">Read a random fact</button>
+      <a href="https://irisbahar.github.io/IrisBaharWebsite/">Dr. Iris Bahar's website</a>
+      <a href="https://github.com/smwasserman/smwasserman.github.io">This site on GitHub</a>
+    </div>
+    <nav class="tasks" aria-label="Open windows"></nav>
+    <time class="clock" id="clock"></time>
+  </footer>
 </body>
 </html>

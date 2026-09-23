@@ -6,21 +6,21 @@
   <title>Page not found - Samuel Wasserman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Silkscreen&display=swap">
   <!-- Absolute path: GitHub Pages serves this page for missing URLs at any depth -->
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-  <main>
-    <header>
+<body class="dialog-page">
+  <main class="window is-active" aria-labelledby="t-404">
+    <header class="titlebar">
+      <span class="title" id="t-404">error_404.exe</span>
+    </header>
+    <div class="window-body">
       <h1>This page is out of stock</h1>
       <p class="intro">There's nothing at this address. Unlike the store, this is not on purpose.</p>
-    </header>
-
-    <section>
       <p id="moved" hidden>The store moved. That page is now at <a id="movedLink" href="/store/">/store/</a>.</p>
-      <p><a href="/">Go to the homepage</a> or <a href="/store/">enter the store</a>.</p>
-    </section>
+      <p class="actions"><a class="btn" href="/">Go to the homepage</a> <a class="btn" href="/store/">Enter the store</a></p>
+    </div>
   </main>
 
   <script>
