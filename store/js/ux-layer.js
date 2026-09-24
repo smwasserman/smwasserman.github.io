@@ -221,9 +221,10 @@
         bar.setAttribute('role', 'region');
         bar.setAttribute('aria-label', 'Site controls');
         bar.innerHTML = `
-            <a href="../">Samuel's homepage</a>
+            <a href="../">Go home</a>
             <button type="button" id="uxlExplain" aria-pressed="false" aria-controls="uxlNotes">Explain the bad UX</button>
             <button type="button" id="uxlMotion">${motionOn ? 'Animations: on' : 'Animations: off'}</button>
+            <button type="button" id="uxlHide" aria-expanded="true">Hide</button>
         `;
 
         const panel = document.createElement('div');
@@ -273,6 +274,12 @@
             document.getElementById('uxlExplain').focus();
         });
         document.getElementById('uxlMotion').addEventListener('click', () => setMotion(!motionOn));
+        document.getElementById('uxlHide').addEventListener('click', e => {
+            const min = bar.classList.toggle('uxl-min');
+            if (min) setExplain(false, notes);
+            e.currentTarget.textContent = min ? 'Controls' : 'Hide';
+            e.currentTarget.setAttribute('aria-expanded', String(!min));
+        });
 
         // Clicking a note scrolls its element into view
         panel.querySelectorAll('.uxl-note').forEach(button => {

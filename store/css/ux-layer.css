@@ -32,7 +32,7 @@ html.motion-off img[src*=".gif"] {
 .uxl-gate,
 .uxl-mark {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.45;
     color: #18212e;
     text-align: left;
@@ -64,7 +64,7 @@ html.motion-off img[src*=".gif"] {
     max-width: calc(100vw - 24px);
     padding: 6px;
     background: #ffffff;
-    border: 2px solid #18212e;
+    border: 1px solid #18212e;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
@@ -80,6 +80,36 @@ html.motion-off img[src*=".gif"] {
 .uxl-bar button[aria-pressed="true"] {
     background: #18212e;
     color: #ffffff;
+}
+
+/* Slightly rounded corners on the controls */
+.uxl-bar,
+.uxl-notes {
+    border-radius: 5px;
+}
+
+.uxl-bar a,
+.uxl-bar button,
+.uxl-notes-head button {
+    border-radius: 3px;
+}
+
+/* Minimized: only the Show button stays */
+.uxl-bar.uxl-min > :not(#uxlHide) {
+    display: none;
+}
+
+/* See-through until the visitor points at or tabs into it */
+.uxl-bar,
+.uxl-notes {
+    opacity: 0.55;
+}
+
+.uxl-bar:hover,
+.uxl-bar:focus-within,
+.uxl-notes:hover,
+.uxl-notes:focus-within {
+    opacity: 0.85;
 }
 
 /* Explain mode: outlines on the offending elements, numbered markers, and a list of notes */
@@ -119,7 +149,7 @@ html.motion-off img[src*=".gif"] {
     max-height: min(60vh, calc(100vh - 88px));
     overflow-y: auto;
     background: #ffffff;
-    border: 2px solid #18212e;
+    border: 1px solid #18212e;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
